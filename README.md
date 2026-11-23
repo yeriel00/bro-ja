@@ -3,21 +3,24 @@
 Static build of the Just Ask. campaign site (American Headache Society) for client approval.
 Plain HTML/CSS/JS — no framework, no build step needed on the host.
 
-## Pages
-| File | Page |
+## Pages (URLs follow the content outline's sitemap)
+| URL | Page |
 |---|---|
-| `index.html` | 0.0 Home |
-| `the-movement.html` | 1.0 The Movement |
-| `the-ask.html` | 2.0 The Ask |
-| `after-the-yes.html` | 3.0 After the Yes |
-| `diagnosing-migraine.html` | 3.1 Diagnosing Migraine |
-| `treating-migraine.html` | 3.2 Treating Migraine |
-| `ongoing-care.html` | 3.3 Ongoing Care |
-| `patient-resources.html` | 3.4 Patient Resources |
-| `resource-library.html` | 3.5 Resource Library (filters; supports `?step=`, `?group=`, `?format=`) |
-| `contact.html` → `thank-you.html` | 4.0 Contact (validates, then goes to Thank You; nothing is sent) |
-| `terms.html`, `privacy.html` | 5.1 / 5.2 Legal |
-| `404.html` | Error page (Cloudflare Pages serves it automatically) |
+| `/` | 0.0 Home |
+| `/why-ask/` | 1.0 Why Ask |
+| `/the-ask/` | 2.0 The Ask |
+| `/after-the-yes/` | 3.0 After the Yes (header dropdown lists the three steps) |
+| `/after-the-yes/diagnosing-migraine/` | 3.1 Diagnosing Migraine |
+| `/after-the-yes/treating-migraine/` | 3.2 Treating Migraine |
+| `/after-the-yes/ongoing-migraine-care/` | 3.3 Ongoing Care |
+| `/resources/` | 3.4 Resource Library (filters; supports `?step=`, `?group=`, `?format=`) |
+| `/contact/` → `/contact/thank-you/` | 4.0 Contact (validates, then goes to Thank You; nothing is sent) |
+| `/terms/`, `/privacy/` | 5.1 / 5.2 Legal |
+| `/404.html` | Error page (Cloudflare Pages serves it automatically) |
+
+`_redirects` sends the first review build's URLs (`/the-movement.html`, `/patient-resources.html`, …) to the new ones.
+Links use root paths, so preview locally with a server, not by double-clicking a file:
+`python3 -m http.server 8000` then open http://localhost:8000.
 
 ## Deploy on Cloudflare Pages
 1. Cloudflare dashboard → Workers & Pages → Create → Pages → Connect to Git → pick this repo.
@@ -25,7 +28,6 @@ Plain HTML/CSS/JS — no framework, no build step needed on the host.
 3. Save and Deploy. Every push to `main` redeploys.
 
 `_headers` sends `X-Robots-Tag: noindex` so the review site stays out of search engines.
-Cloudflare serves `/the-ask.html` at `/the-ask` too.
 
 ## Editing
 Page copy lives in `src/pages.py` (shared markup in `src/parts.py`, library data in `src/resources.py`,

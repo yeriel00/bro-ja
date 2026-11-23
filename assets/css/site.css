@@ -2269,3 +2269,33 @@ img { max-width: 100%; }
 .ja-bars.is-armed .ja-bar:nth-child(2) .ja-bar__fill { transition-delay: .15s; }
 .ja-bars.is-armed .ja-bar:nth-child(3) .ja-bar__fill { transition-delay: .3s; }
 .ja-bars.is-armed.is-in .ja-bar__fill { transform: scaleX(1); }
+
+/* ---------- Header: After the Yes dropdown (desktop) + indented sub-links (mobile menu) ---------- */
+.ja-nav a.is-section { color: var(--text-link); }
+.ja-nav__item--sub { position: relative; display: flex; align-items: center; }
+.ja-nav__subtoggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; min-height: var(--control-min-height); margin-left: 2px; padding: 0;
+  border: 0; background: none; color: var(--text-default); cursor: pointer;
+}
+.ja-nav__subtoggle:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); }
+.ja-chev { width: 12px; height: 8px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s ease; }
+.ja-subnav {
+  position: absolute; top: calc(100% + 4px); left: -20px; z-index: 30;
+  min-width: 260px; margin: 0; padding: 8px 0; list-style: none;
+  background: var(--surface-page); border: 1px solid var(--graphic-quiet); border-radius: var(--radius-md);
+  box-shadow: 0 12px 32px rgba(7, 42, 89, .12);
+  opacity: 0; visibility: hidden; transform: translateY(-4px);
+  transition: opacity .15s ease, transform .15s ease, visibility 0s linear .15s;
+}
+.ja-subnav::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }  /* hover bridge */
+.ja-subnav a { display: flex; width: 100%; box-sizing: border-box; padding: 4px 20px; }
+.ja-subnav a:hover { background: var(--surface-soft); }
+.ja-nav__item--sub:hover .ja-subnav, .ja-nav__item--sub.is-open .ja-subnav {
+  opacity: 1; visibility: visible; transform: none; transition: opacity .15s ease, transform .15s ease, visibility 0s;
+}
+.ja-nav__item--sub:hover .ja-chev, .ja-nav__item--sub.is-open .ja-chev { transform: rotate(180deg); }
+@media (prefers-reduced-motion: reduce) { .ja-subnav, .ja-chev { transition: none; } }
+
+.ja-mobile-subnav { list-style: none; margin: 0; padding: 0 0 0 var(--space-24) !important; gap: 0 !important; border-left: 2px solid var(--graphic-quiet); }
+.ja-mobile-subnav a { font-size: 16px; font-weight: 500; min-height: 40px; }

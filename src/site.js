@@ -116,7 +116,7 @@
         setError(input, !ok);
         if (!ok) bad.push(input);
       });
-      if (!bad.length) { window.location.href = 'thank-you.html'; return; }
+      if (!bad.length) { window.location.href = '/contact/thank-you/'; return; }
       alertBox.querySelector('.ja-form-alert__title').textContent = 'Check ' + bad.length + (bad.length === 1 ? ' field' : ' fields') + ' before sending';
       alertBox.querySelector('ul').innerHTML = bad.map(function (i) { return '<li><a href="#' + i.id + '">' + esc(i.dataset.error) + '</a></li>'; }).join('');
       alertBox.hidden = false;
@@ -203,6 +203,18 @@
     });
   }
 
-  function init() { initLibrary(); initContact(); initPending(); initExternal(); initBars(); }
+  /* ---------- Desktop dropdown (After the Yes): opens on hover or the chevron button; Escape / outside click closes ---------- */
+  function initSubnav() {
+    Array.prototype.forEach.call(document.querySelectorAll('.ja-nav__item--sub'), function (item) {
+      var btn = item.querySelector('.ja-nav__subtoggle');
+      function set(open) { item.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); }
+      btn.addEventListener('click', function (e) { e.stopPropagation(); set(!item.classList.contains('is-open')); });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Escape' && item.classList.contains('is-open')) { set(false); btn.focus(); } });
+      item.addEventListener('focusout', function (e) { if (!item.contains(e.relatedTarget)) set(false); });
+      document.addEventListener('click', function (e) { if (!item.contains(e.target)) set(false); });
+    });
+  }
+
+  function init() { initLibrary(); initContact(); initPending(); initExternal(); initBars(); initSubnav(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();

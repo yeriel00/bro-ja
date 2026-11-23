@@ -66,16 +66,16 @@ def page_html(p):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">{robots}
-<link rel="icon" href="assets/img/logos/just-ask-blue.svg" type="image/svg+xml">
-<link rel="preload" href="assets/fonts/Montserrat-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css">
-<script src="assets/js/bundle.js" defer></script>
-<script src="assets/js/site.js" defer></script>
+<link rel="icon" href="/assets/img/logos/just-ask-blue.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/Montserrat-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<script src="/assets/js/bundle.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </head>
 <body>
 <div class="ja-root">
 <a class="ja-skip" href="#main">Skip to content</a>
-{header(p.get("nav"))}
+{header(p["key"])}
 {p["body"]()}
 {footer()}
 </div>
@@ -87,9 +87,21 @@ def page_html(p):
 def main():
     build_assets()
     for p in PAGES:
-        out = os.path.join(ROOT, p["file"])
+        out = os.path.join(ROOT, p["path"])
+        os.makedirs(os.path.dirname(out), exist_ok=True)
         open(out, "w", encoding="utf-8").write(page_html(p))
-        print("wrote", p["file"])
+        print("wrote", p["path"])
+    # Pages from the first review build that moved (see _redirects); remove them if this machine allows it.
+    for old in ("the-movement.html", "the-ask.html", "after-the-yes.html", "diagnosing-migraine.html", "treating-migraine.html",
+                "ongoing-care.html", "patient-resources.html", "resource-library.html", "contact.html", "thank-you.html",
+                "terms.html", "privacy.html"):
+        f = os.path.join(ROOT, old)
+        if os.path.exists(f):
+            try:
+                os.remove(f)
+                print("removed", old)
+            except OSError:
+                print("could not remove", old, "- delete it by hand (git rm)")
 
 
 if __name__ == "__main__":

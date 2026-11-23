@@ -1,0 +1,20 @@
+# Old review-build URLs -> sitemap URLs
+/the-movement.html          /why-ask/                              301
+/the-movement               /why-ask/                              301
+/the-ask.html               /the-ask/                              301
+/after-the-yes.html         /after-the-yes/                        301
+/diagnosing-migraine.html   /after-the-yes/diagnosing-migraine/    301
+/diagnosing-migraine        /after-the-yes/diagnosing-migraine/    301
+/treating-migraine.html     /after-the-yes/treating-migraine/      301
+/treating-migraine          /after-the-yes/treating-migraine/      301
+/ongoing-care.html          /after-the-yes/ongoing-migraine-care/  301
+/ongoing-care               /after-the-yes/ongoing-migraine-care/  301
+/patient-resources.html     /resources/                            301
+/patient-resources          /resources/                            301
+/resource-library.html      /resources/                            301
+/resource-library           /resources/                            301
+/contact.html               /contact/                              301
+/thank-you.html             /contact/thank-you/                    301
+/thank-you                  /contact/thank-you/                    301
+/terms.html                 /terms/                                301
+/privacy.html               /privacy/                              301

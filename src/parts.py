@@ -3,15 +3,17 @@
 ARROW = '<svg class="ja-arrow" viewBox="0 0 13 24" aria-hidden="true"><path d="M0 11h9.17L5.6 7.41 6.99 6 13 12l-6.01 6-1.39-1.41L9.17 13H0z"></path></svg>'
 Q = "In the past month, has a headache interfered with your work, school, family, or other activities?"
 Q_HL = "In the past month, has a headache interfered with your <span class=\"ja-hl\">work, school, family, or other activities?</span>"
-PHOTO = "assets/img/consultation.webp"
+PHOTO = "/assets/img/consultation.webp"
 
-NAV = [
-    ("movement", "the-movement.html", "The Movement"),
-    ("ask", "the-ask.html", "The Ask"),
-    ("aty", "after-the-yes.html", "After the Yes"),
-    ("patients", "patient-resources.html", "Patient Resources"),
-]
-FOOTER_NAV = NAV + [("library", "resource-library.html", "Resource Library"), ("contact", "contact.html", "Contact")]
+URL = {
+    "home": "/", "why": "/why-ask/", "ask": "/the-ask/", "aty": "/after-the-yes/",
+    "diag": "/after-the-yes/diagnosing-migraine/", "treat": "/after-the-yes/treating-migraine/",
+    "ongoing": "/after-the-yes/ongoing-migraine-care/", "library": "/resources/",
+    "contact": "/contact/", "thanks": "/contact/thank-you/", "terms": "/terms/", "privacy": "/privacy/",
+}
+SUB_ATY = [("diag", "Diagnosing Migraine"), ("treat", "Treating Migraine"), ("ongoing", "Ongoing Care")]
+NAV = [("why", "Why Ask"), ("ask", "The Ask"), ("aty", "After the Yes"), ("library", "Resource Library")]
+FOOTER_NAV = NAV + [("contact", "Contact")]
 
 
 def sup(n):
@@ -39,34 +41,51 @@ def fpo(img_html, cls=""):
     return f'<div class="ja-fpo {cls}">{img_html}<span class="ja-fpo__label" aria-hidden="true">FPO</span></div>'
 
 
-def header(active=None):
-    def items(mobile=False):
-        out = []
-        for key, href, label in NAV:
-            cur = ' aria-current="page"' if key == active else ""
-            out.append(f'<li><a href="{href}"{cur}>{label}</a></li>')
-        return "".join(out)
+CHEVRON = '<svg class="ja-chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5"/></svg>'
+
+
+def header(page=None):
+    """page: key of the current page (see URL). After the Yes gets a dropdown for its three steps."""
+    section = "aty" if page in ("aty", "diag", "treat", "ongoing") else page
+
+    def a(key, label, extra=""):
+        cur = ' aria-current="page"' if key == page else ""
+        cls = ' class="is-section"' if key == section and key != page else ""
+        return f'<a href="{URL[key]}"{cur}{cls}{extra}>{label}</a>'
+
+    desk, mob = [], []
+    for key, label in NAV:
+        if key == "aty":
+            subs = "".join(f'<li>{a(k, l)}</li>' for k, l in SUB_ATY)
+            desk.append(f'<li class="ja-nav__item ja-nav__item--sub">{a(key, label)}'
+                        f'<button class="ja-nav__subtoggle" type="button" aria-expanded="false" aria-controls="ja-sub-aty">'
+                        f'<span class="ja-visually-hidden">After the Yes pages</span>{CHEVRON}</button>'
+                        f'<ul class="ja-subnav" id="ja-sub-aty">{subs}</ul></li>')
+            mob.append(f'<li>{a(key, label)}<ul class="ja-mobile-subnav">{subs}</ul></li>')
+        else:
+            desk.append(f'<li class="ja-nav__item">{a(key, label)}</li>')
+            mob.append(f'<li>{a(key, label)}</li>')
     return f'''<header class="ja-header">
   <div class="ja-container ja-header__bar">
-    <a class="ja-header__logo" href="index.html"><img src="assets/img/logos/just-ask-full-color.svg" alt="Just Ask." width="190" height="38"></a>
-    <nav class="ja-nav ja-label" aria-label="Primary"><ul class="ja-nav__list">{items()}</ul></nav>
+    <a class="ja-header__logo" href="/"><img src="/assets/img/logos/just-ask-full-color.svg" alt="Just Ask." width="190" height="38"></a>
+    <nav class="ja-nav ja-label" aria-label="Primary"><ul class="ja-nav__list">{"".join(desk)}</ul></nav>
     <button class="ja-menu-toggle ja-label" type="button" aria-expanded="false" aria-controls="ja-mobile-nav"><span class="ja-menu-label">Menu</span><svg class="ja-burger" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 1h18M0 7h18M0 13h18"/></svg><svg class="ja-x" viewBox="0 0 18 14" aria-hidden="true"><path d="M3 0l12 14M15 0L3 14"/></svg></button>
   </div>
-  <nav class="ja-mobile-nav ja-label" id="ja-mobile-nav" aria-label="Primary"><ul class="ja-container">{items(True)}</ul></nav>
+  <nav class="ja-mobile-nav ja-label" id="ja-mobile-nav" aria-label="Primary"><ul class="ja-container">{"".join(mob)}</ul></nav>
 </header>'''
 
 
 def footer():
-    items = "".join(f'<li><a href="{h}">{l}</a></li>' for _, h, l in FOOTER_NAV)
+    items = "".join(f'<li><a href="{URL[k]}">{l}</a></li>' for k, l in FOOTER_NAV)
     return f'''<footer class="ja-footer">
   <div class="ja-container">
     <div class="ja-footer__top">
-      <a class="ja-footer__logo" href="index.html"><img src="assets/img/logos/just-ask-full-color.svg" alt="Just Ask." width="190" height="38" loading="lazy"></a>
+      <a class="ja-footer__logo" href="/"><img src="/assets/img/logos/just-ask-full-color.svg" alt="Just Ask." width="190" height="38" loading="lazy"></a>
       <nav class="ja-footer__nav ja-label" aria-label="Footer"><ul>{items}<li><a href="https://americanheadachesociety.org/">Visit American Headache Society</a></li></ul></nav>
     </div>
     <div class="ja-footer__bottom ja-small">
       <p style="margin:0">© 2026 American Headache Society</p>
-      <ul class="ja-footer__legal"><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms</a></li></ul>
+      <ul class="ja-footer__legal"><li><a href="{URL["privacy"]}">Privacy Policy</a></li><li><a href="{URL["terms"]}">Terms</a></li></ul>
     </div>
   </div>
 </footer>'''
@@ -94,7 +113,7 @@ def hero_photo():
 
 
 def step_nav(current):
-    steps = [("diagnosing-migraine.html", "Step 1", "Diagnosing migraine"), ("treating-migraine.html", "Step 2", "Treating migraine"), ("ongoing-care.html", "Step 3", "Ongoing care")]
+    steps = [(URL["diag"], "Step 1", "Diagnosing migraine"), (URL["treat"], "Step 2", "Treating migraine"), (URL["ongoing"], "Step 3", "Ongoing care")]
     cur = ' aria-current="page"'
     lis = "".join(
         f'<li><a href="{h}"{cur if i == current else ""}><span class="ja-step-nav__num">{n}</span><span class="ja-step-nav__name">{t}</span></a></li>'
@@ -219,5 +238,5 @@ def page_nav(back=None, nxt=None, library=True):
     if nxt:
         n = (f'<a class="ja-pagenav__next" href="{nxt[0]}"><span><span class="ja-pagenav__kicker">{nxt[1]}</span>'
              f'<span class="ja-h3 ja-pagenav__title">{nxt[2]}</span></span>{ARROW}</a>')
-    lib = f'<a class="ja-link ja-pagenav__library" href="resource-library.html">See All <span class="ja-nowrap">Resources {ARROW}</span></a>' if library else ""
+    lib = f'<a class="ja-link ja-pagenav__library" href="/resources/">See All <span class="ja-nowrap">Resources {ARROW}</span></a>' if library else ""
     return f'<section class="ja-section"><div class="ja-container"><nav class="ja-pagenav" aria-label="Page">{b}<div class="ja-pagenav__group">{n}{lib}</div></nav></div></section>'
