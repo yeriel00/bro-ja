@@ -527,7 +527,6 @@ def contact():
     return f'''<main id="main" class="ja-interior">
 {page_hero(None, "Contact us", "Questions about Just Ask or the resources on this site? Send us a message and our team will get back to you.")}
 <section class="ja-section ja-contact-section ja-contact-section--last" style="padding-top: 0">
-  <span class="ja-pattern ja-contact__pattern" aria-hidden="true"></span>
   <div class="ja-container ja-contact">
     <aside class="ja-contact__aside"><h2 class="ja-label">Social media</h2><ul class="ja-social">{socials}</ul></aside>
     <form class="ja-form" id="ja-contact-form" action="/contact/thank-you/" method="get" novalidate>
