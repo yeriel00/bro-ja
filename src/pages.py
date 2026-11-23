@@ -4,6 +4,7 @@ from parts import *  # noqa: F401,F403
 from parts import ARROW, Q, Q_HL, PHOTO, URL
 from hero_cells import face_grid
 from resources import LIBRARY_JSON
+from social import SOCIAL
 
 OVERCOME = ("Hutchinson S, Nicholson RA, Vargas B, et al. Seeking care, diagnosis, and acute prescription for migraine among those "
             "with headache-related disability: results of the OVERCOME study. Headache. 2020;60(S1):132–133. Final claim mapping pending.")
@@ -523,7 +524,7 @@ def field(id_, label, typ="text", auto="off", required=True, hint="", textarea=F
 
 
 def contact():
-    socials = "".join(f'<li><a class="ja-social__link" href="#social" data-ja-pending="Social links" aria-label="[Platform {i}]"><span class="ja-social__icon" aria-hidden="true"></span></a></li>' for i in range(1, 5))
+    socials = "".join(f'<li><a class="ja-social__link" href="{url}" aria-label="American Headache Society on {name}">{svg}</a></li>' for name, url, svg in SOCIAL)
     return f'''<main id="main" class="ja-interior">
 {page_hero(None, "Contact us", "Questions about Just Ask or the resources on this site? Send us a message and our team will get back to you.")}
 <section class="ja-section ja-contact-section ja-contact-section--last" style="padding-top: 0">
