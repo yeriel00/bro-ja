@@ -2261,3 +2261,11 @@ img { max-width: 100%; }
 
 /* Hero face grid fills windows wider than 1440 (design grid is 24 columns; we render 48) */
 .ja-facegrid { width: calc(var(--ja-pitch) * 48); grid-template-columns: repeat(48, var(--ja-pitch)); }
+
+/* DataBars (The Movement, diagnosis gap): bars grow and numbers count up once, when scrolled into view.
+   Without JS, or with reduced motion, the bars simply show at full value. */
+.ja-bar__value { font-variant-numeric: tabular-nums; }
+.ja-bars.is-armed .ja-bar__fill { transform: scaleX(0); transform-origin: left center; transition: transform 1.4s cubic-bezier(.22, .61, .36, 1); }
+.ja-bars.is-armed .ja-bar:nth-child(2) .ja-bar__fill { transition-delay: .15s; }
+.ja-bars.is-armed .ja-bar:nth-child(3) .ja-bar__fill { transition-delay: .3s; }
+.ja-bars.is-armed.is-in .ja-bar__fill { transform: scaleX(1); }

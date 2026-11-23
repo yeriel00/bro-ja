@@ -163,6 +163,46 @@
     });
   }
 
-  function init() { initLibrary(); initContact(); initPending(); initExternal(); }
+  /* ---------- DataBars: grow bars + count up values once, on first scroll into view ---------- */
+  function initBars() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) return;
+    Array.prototype.forEach.call(document.querySelectorAll('.ja-bars'), function (list) {
+      var bars = Array.prototype.slice.call(list.querySelectorAll('.ja-bar'));
+      var items = bars.map(function (bar) {
+        var el = bar.querySelector('.ja-bar__value');
+        var text = el.textContent.trim();
+        var m = text.match(/^([\d.]+)(.*)$/);
+        if (!m) return null;
+        var target = parseFloat(m[1]);
+        var decimals = (m[1].split('.')[1] || '').length;
+        el.style.minWidth = el.getBoundingClientRect().width + 'px';   // no layout shift while counting
+        el.style.textAlign = 'right';
+        el.textContent = (0).toFixed(decimals) + m[2];
+        return { el: el, target: target, decimals: decimals, suffix: m[2], text: text };
+      });
+      list.classList.add('is-armed');
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();                                   // only once
+        list.classList.add('is-in');
+        items.forEach(function (it, i) {
+          if (!it) return;
+          var dur = 1400, delay = i * 150, start = null;
+          function step(t) {
+            if (start === null) start = t + delay;
+            var p = Math.min(1, Math.max(0, (t - start) / dur));
+            var e = 1 - Math.pow(1 - p, 3);                // ease-out, matches the bar transition
+            it.el.textContent = p < 1 ? (it.target * e).toFixed(it.decimals) + it.suffix : it.text;
+            if (p < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.4 });
+      io.observe(list);
+    });
+  }
+
+  function init() { initLibrary(); initContact(); initPending(); initExternal(); initBars(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
