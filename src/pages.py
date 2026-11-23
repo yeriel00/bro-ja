@@ -87,7 +87,7 @@ def home():
     <ul class="ja-stats__grid">{stats}</ul>
   </div>
 </section>
-{quote_band("I was waiting for them to tell me, and they were waiting for me to ask.", "Clinician, AHS Study", 10, white=False)}
+{quote_band("I was waiting for them to tell me, and they were waiting for me to ask.", "Clinician, AHS Study", 10)}
 <section class="ja-section ja-treatment" aria-labelledby="ja-treat-title">
   <div class="ja-container ja-treatment__grid">
     <div class="ja-treatment__text">
