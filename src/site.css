@@ -62,3 +62,6 @@ img { max-width: 100%; }
 
 /* Long statistic values ("57.5–63.6%") stay on one line and scale down instead of breaking mid-range */
 .ja-stat__value--long { white-space: nowrap; font-size: clamp(36px, 5vw, 80px); line-height: 1.15; }
+
+/* Hero face grid fills windows wider than 1440 (design grid is 24 columns; we render 48) */
+.ja-facegrid { width: calc(var(--ja-pitch) * 48); grid-template-columns: repeat(48, var(--ja-pitch)); }

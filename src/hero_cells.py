@@ -9,8 +9,15 @@ def face_grid():
     for _, f, s in CELLS:
         if f not in pairs:
             pairs[f] = len(pairs) + 1
+    # The design grid is 24 x 9 (1440px). For wider windows, extend every row to 48 columns by
+    # continuing it with a different row's cells, so the pattern never visibly repeats side by side.
+    COLS, ROWS, WIDE = 24, 9, 48
+    rows = [CELLS[r * COLS:(r + 1) * COLS] for r in range(ROWS)]
+    cells = []
+    for r in range(ROWS):
+        cells += rows[r] + rows[(r + 4) % ROWS][::-1][: WIDE - COLS]
     lis = []
-    for is_face, f, _ in CELLS:
+    for is_face, f, _ in cells:
         n = (pairs[f] - 1) % 16 + 1
         cls = "is-face" if is_face else "is-sil"
         lis.append(f'<li class="{cls}"><img class="ja-f" src="assets/img/portraits/portrait-{n:02d}.webp" alt="" width="48" height="48" decoding="async"><img class="ja-s" src="assets/img/portraits/portrait-{n:02d}-silhouette.webp" alt="" width="48" height="48" decoding="async"></li>')
