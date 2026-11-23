@@ -1,0 +1,103 @@
+/* Just Ask. — SiteHeader styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 01 Site header ---------- */
+/* Fluid (Nov 20): bar height 80 → 86 and logo 160 → 190 scale with the page; the menu's block padding grows 12 → 28 by 768.
+   The ONE media query left in the system's layout: full nav from 1024, Menu below (the four links must not wrap). */
+.ja-header {
+  position: relative;
+  z-index: 20;
+  background: var(--surface-page);
+  border-bottom: var(--stroke-border) solid var(--graphic-quiet); /* every mode (Nov 18) */
+}
+.ja-header__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: clamp(80px, 77.887px + 0.5634vw, 86px);
+}
+.ja-header__logo { display: block; line-height: 0; border-radius: 2px; }
+.ja-header__logo img { display: block; width: clamp(160px, 149.437px + 2.8169vw, 190px); height: auto; }
+.ja-header__logo:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 4px; }
+.ja-nav { display: none; }
+.ja-nav__list { display: flex; gap: var(--space-24); margin: 0; padding: 0; list-style: none; }
+.ja-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--control-min-height);
+  color: var(--text-default);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+}
+.ja-nav a:hover { color: var(--text-link); }
+.ja-nav a[aria-current="page"] { color: var(--text-link); }
+.ja-nav a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+.ja-menu-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--control-min-height);
+  padding: 0 0 0 var(--space-8);
+  border: 0;
+  background: none;
+  color: var(--text-default);
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+.ja-menu-toggle:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+.ja-menu-toggle svg { width: 18px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+.ja-menu-toggle .ja-x { display: none; }
+.ja-header.is-open .ja-menu-toggle .ja-burger { display: none; }
+.ja-header.is-open .ja-menu-toggle .ja-x { display: block; }
+/* Expanded mobile/tablet navigation (Figma "Navigation Panel").
+   Full display height below the header bar; slides in from the right (the Menu button's side).
+   bundle.js sets --ja-menu-top (the header bar's bottom edge), locks page scroll and keeps focus in the header.
+   No border: the header bar's bottom border separates it. Links: Figma 24px labels, 32 apart,
+   padding 24 / 40 -> 48px targets + 8 gap (same 56 pitch), block padding 12 / 28. */
+.ja-mobile-nav {
+  position: fixed;
+  top: var(--ja-menu-top, 81px);
+  right: 0; bottom: 0; left: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--surface-page);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--ja-duration-menu) var(--ja-ease), visibility 0s linear var(--ja-duration-menu);
+}
+.ja-header { --ja-duration-menu: 300ms; }
+.ja-header.is-open .ja-mobile-nav {
+  transform: none;
+  visibility: visible;
+  transition: transform var(--ja-duration-menu) var(--ja-ease), visibility 0s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ja-mobile-nav, .ja-header.is-open .ja-mobile-nav { transition: none; }
+}
+.ja-mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  margin: 0;
+  padding-block: clamp(12px, 4.0712vw - 3.267px, 28px);   /* 12 at 375 → 28 at 768 */
+  list-style: none;
+}
+.ja-mobile-nav a {
+  display: inline-flex; align-items: center; min-height: var(--control-min-height);
+  color: var(--text-link); text-decoration: none;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+}
+/* Arrow: a separate flex item, so it never wraps away from the label and stays out of the current-page underline. */
+.ja-mobile-nav a .ja-arrow { margin-left: 0.25em; }
+.ja-mobile-nav a:hover, .ja-mobile-nav a:active { color: var(--text-link-hover); }
+.ja-mobile-nav a[aria-current="page"] {
+  color: var(--text-link-hover);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+.ja-mobile-nav a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+@media (min-width: 1024px) {   /* breakpoint-desktop: where the nav fits on one line */
+  .ja-nav { display: block; }
+  .ja-menu-toggle, .ja-mobile-nav, .ja-header.is-open .ja-mobile-nav { display: none; }
+}

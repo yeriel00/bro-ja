@@ -1,0 +1,64 @@
+/* Just Ask. — review-build additions. Everything else comes from the design system.
+   Keep this file small: placeholder treatment, a few glue classes for the static build,
+   and media queries only where a layout breaks while the window shrinks. */
+
+.ja-pattern { --ja-pattern-url: url("../img/pattern-brain.svg"); }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; overflow-x: hidden; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+:target { scroll-margin-top: 96px; }
+
+/* Skip link */
+.ja-skip { position: absolute; left: 8px; top: -60px; z-index: 100; padding: 12px 16px; background: var(--navy); color: #fff; font: 600 16px/24px var(--font-sans); border-radius: var(--radius-sm); }
+.ja-skip:focus { top: 8px; }
+
+/* ---------- FPO: the shared placeholder photo gets a tint and a centred "FPO" in primary blue ---------- */
+:where(.ja-fpo) { position: relative; overflow: hidden; }
+.ja-fpo__label {
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(227, 241, 249, 0.72);            /* pale-blue tint layer */
+  color: var(--blue);                                /* primary blue */
+  font-family: var(--font-sans); font-weight: 800; letter-spacing: 0.08em;
+  font-size: clamp(40px, 6vw, 88px); line-height: 1;
+  pointer-events: none; border-radius: inherit;
+}
+.ja-fpo--hero { border-radius: var(--radius-media); }
+.ja-fpo--hero .ja-page-hero__img { border-radius: 0; }
+/* Quote band: keep the label in the visible part of the photo, above the card */
+.ja-fpo--band .ja-fpo__label { align-items: flex-start; padding-top: clamp(64px, 10vw, 120px); }
+@container ja-quote (min-width: 56rem) { .ja-fpo--band .ja-fpo__label { align-items: center; justify-content: center; padding: 0 0 0 46%; } }
+.ja-fpo--band .ja-fpo__label { z-index: 0; }
+.ja-quote__inner { z-index: 1; }
+.ja-featured__preview.ja-fpo .ja-fpo__label { font-size: clamp(36px, 4vw, 64px); }
+
+/* ---------- Glue for pieces the artifact composed inline ---------- */
+.ja-qpanel__actions { margin-top: var(--space-24); padding-left: var(--space-32); }
+.ja-callout__more { margin-top: var(--space-16); }
+.ja-callout .ja-pullquote { background: transparent; }
+.ja-partners--strip { padding-block: var(--space-32); }
+.ja-partners--strip .ja-partners__logos { margin-top: 0; }
+.ja-partner img { width: auto; }
+.ja-page-hero__img { height: auto; }
+.ja-cta__buttons { display: flex; flex-wrap: wrap; gap: var(--space-16); }
+.ja-text-section__more .ja-link, .ja-card-grid__after > .ja-link { display: inline-block; }
+.ja-results-grid, .ja-card-grid__list { min-width: 0; }
+
+/* Placeholder notice (share / social / pending downloads) */
+.ja-toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 200; transform: translate(-50%, 20px);
+  max-width: min(92vw, 480px); padding: 14px 20px; border-radius: var(--radius-md);
+  background: var(--navy); color: #fff; font: 500 15px/22px var(--font-sans);
+  box-shadow: 0 8px 24px rgba(7, 42, 89, .25); opacity: 0; pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.ja-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Long words / URLs never force sideways scroll */
+.ja-root h1, .ja-root h2, .ja-root h3, .ja-root p, .ja-root li { overflow-wrap: break-word; }
+
+/* ---------- Media queries: only where content breaks on window shrink ---------- */
+
+/* Long statistic values ("57.5–63.6%") stay on one line and scale down instead of breaking mid-range */
+.ja-stat__value--long { white-space: nowrap; font-size: clamp(36px, 5vw, 80px); line-height: 1.15; }

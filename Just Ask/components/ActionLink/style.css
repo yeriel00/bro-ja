@@ -1,0 +1,43 @@
+/* Just Ask. — ActionLink styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- Action link (06 — inline treatment, "See the Question →") ---------- */
+.ja-link {
+  display: inline-block;
+  min-height: var(--control-min-height);
+  padding-block: calc((var(--control-min-height) - var(--body-lh-desktop)) / 2);
+  color: var(--text-link);
+  font-family: var(--font-sans);
+  font-size: var(--body-size-desktop);
+  line-height: var(--body-lh-desktop);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: auto;
+  text-decoration-skip-ink: none;
+  cursor: pointer;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+.ja-link:hover, .ja-link.is-hover,
+.ja-link:active, .ja-link.is-pressed { color: var(--text-link-hover); }
+.ja-link:focus { outline: none; }
+.ja-link:focus-visible, .ja-link.is-focus {
+  outline: var(--stroke-focus) solid var(--border-focus);
+  outline-offset: 0;
+}
+/* Links on pale-blue (footer, resource cards): navy to pass AA; hover drops to muted navy. */
+.ja-link--on-soft { color: var(--text-link-on-soft); }
+.ja-link--on-soft:hover, .ja-link--on-soft.is-hover,
+.ja-link--on-soft:active, .ja-link--on-soft.is-pressed { color: var(--text-muted); }
+/* On navy: white in every state, white focus ring. */
+.ja-link--inverse,
+.ja-link--inverse:hover, .ja-link--inverse.is-hover,
+.ja-link--inverse:active, .ja-link--inverse.is-pressed { color: var(--text-inverse); }
+.ja-link--inverse:focus-visible, .ja-link--inverse.is-focus { outline-color: var(--text-inverse); }
+/* "Share With a Colleague" in the CTA band is set Bold in the frames. */
+.ja-link--strong { font-weight: 700; }
+/* Smaller label-size link (resource card "Explore diagnosis resources", footer). */
+.ja-link--label {
+  font-size: var(--label-size-desktop);
+  line-height: var(--label-lh-desktop);
+  padding-block: calc((var(--control-min-height) - var(--label-lh-desktop)) / 2);
+}

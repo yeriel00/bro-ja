@@ -1,0 +1,15 @@
+/* Just Ask. — Callout styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   Callout — titled note inside a section or as an aside. No fill, so it never reads as a card:
+   the system's open bracket (stroke-thin-accent, graphic-accent) on the left marks it instead.
+   ===================================================================== */
+/* Nov 19: closed brackets on both sides ([ … ]), so a callout reads as a self-contained note or tip, and the open
+   left-only bracket stays the clinical question's signature. Padding 32 on both sides; the callout fills its column
+   (the aside, or 720 when stacked), so the right bracket always sits on a fixed edge, never on ragged text. */
+.ja-callout { position: relative; padding: var(--space-4) var(--space-32); color: var(--text-default); }
+.ja-callout::before, .ja-callout::after { content: ""; position: absolute; top: 0; bottom: 0; width: 14px;
+  border: var(--stroke-thin-accent) solid var(--graphic-accent); }
+.ja-callout::before { left: 0; border-right: 0; }
+.ja-callout::after { right: 0; border-left: 0; }
+.ja-callout__text { margin-top: var(--space-12); }
+.ja-callout .ja-link { margin-top: var(--space-4); margin-bottom: -12px; }

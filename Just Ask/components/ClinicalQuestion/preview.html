@@ -1,0 +1,39 @@
+<!-- @dsCard group="Homepage sections" height=1380 width=1440 subtitle="Eyebrow, heading, body and the bracketed question panel. Second example: page intro (H1) with the Copy the Question text action in the panel, no link" -->
+<div class="ja-root">
+  <link rel="stylesheet" href="../../components/ActionLink/style.css"><link rel="stylesheet" href="../../components/ClinicalQuestion/style.css">
+<p class="ja-small" style="margin:0;padding:32px var(--ja-margin) 16px;color:var(--text-muted);font-weight:600">Default — eyebrow, H2, body, bracketed question (homepage)</p>
+<section class="ja-section ja-question" aria-labelledby="ja-question-title">
+  <div class="ja-container ja-question__grid">
+    <div class="ja-question__intro">
+      <p class="ja-eyebrow ja-label">Just Ask</p>
+      <h2 class="ja-h2" id="ja-question-title">One question that fits into every visit</h2>
+    </div>
+    <figure class="ja-question__panel">
+      <blockquote class="ja-question__bracket ja-statement">“In the past month, has a headache interfered with your <span class="ja-hl">work, school, family, or other activities?</span>”</blockquote>
+    </figure>
+    <div class="ja-question__after">
+      <div class="ja-prose ja-body"><p>Patients may keep working, caring for family, and going to school despite disabling symptoms. This brief question focuses on what headaches interfere with and can be added to intake, rooming, or a routine visit.</p></div>
+      <a class="ja-link" href="/the-ask/">Simple by Design&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a>
+    </div>
+  </div>
+</section>
+<!-- Page intro use (The Ask): heading_level h1, show_link off, show_copy_button on. -->
+<p class="ja-small" style="margin:0;border-top:1px solid var(--graphic-quiet);margin-top:64px;padding:64px var(--ja-margin) 16px;color:var(--text-muted);font-weight:600">Page intro — H1, Copy the Question in the panel, no link</p>
+<section class="ja-section ja-question" aria-labelledby="ja-question-title-2">
+  <div class="ja-container ja-question__grid">
+    <div class="ja-question__intro">
+      <p class="ja-eyebrow ja-label">Just Ask</p>
+      <h1 class="ja-h1" id="ja-question-title-2">One question that fits into every visit</h1>
+    </div>
+    <figure class="ja-question__panel">
+      <blockquote class="ja-question__bracket ja-statement">“In the past month, has a headache interfered with your <span class="ja-hl">work, school, family, or other activities?</span>”</blockquote>
+      <div class="ja-question__actions"><button class="ja-question__copy" type="button" data-ja-copy hidden><span class="ja-copy-label">Copy the Question</span></button></div>
+    </figure>
+    <div class="ja-question__after">
+      <div class="ja-prose ja-body"><p>Patients may keep working, caring for family, and going to school despite disabling symptoms. This brief question focuses on what headaches interfere with and can be added to intake, rooming, or a routine visit.</p></div>
+    </div>
+    <p class="ja-copy-status ja-visually-hidden" role="status"></p>
+  </div>
+</section>
+<script>window.JustAsk && window.JustAsk.initAll();</script>
+</div>

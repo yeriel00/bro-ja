@@ -1,0 +1,716 @@
+/* Just Ask. — generated from tokens.json */
+:root, [data-theme="light"] {
+  --navy: #072a59; /* Brand/Navy. Headings and core text; inverse surface; hover and focus. */
+  --blue: #2b79b9; /* Brand/Blue. Emphasis and actions: primary button, links on white, accent rules, highlighted words in large type. 4.63:1 on white — text use only on white/page. */
+  --sky: #c3ecff; /* Brand/Sky. Graphic accents; highlighted words on navy (11.29:1). Never body text on white. */
+  --pale-blue: #e3f1f9; /* Brand/Pale Blue. Quiet surfaces (question panel, quote card, treatment band, footer) and subtle borders. */
+  --white: #ffffff; /* Brand/White. Primary canvas and text on navy/blue. */
+  --muted-navy: #2b476b; /* Brand/Muted Navy. Secondary text on surface-page (9.48:1) and surface-soft (8.22:1); strong borders; pressed state. On navy it is decorative only — the CTA band's topographic pattern lines (no contrast minimum applies). Never use it for text, icons or meaningful borders on navy (1.4:1); use sky or white there. */
+  --clinical-tint: #f5fafd; /* Color/Clinical Tint. Statistic card ground. */
+  --text-default: var(--navy); /* Text/Default. Headings and body on page, soft, accent and statistic surfaces (14.15:1 on white). */
+  --text-muted: var(--muted-navy); /* Text/Muted. Secondary text, captions on page and soft surfaces (8.22:1 on pale-blue). */
+  --text-inverse: var(--white); /* Text/Inverse. Text on surface-inverse and on action fills. */
+  --text-link: var(--blue); /* Text/Link. Inline and action links on surface-page (4.63:1). Also used for large highlighted words (24px+ ExtraBold) inside the clinical question panel. For small links on surface-soft or surface-accent, use text-link-on-soft instead. */
+  --text-link-hover: var(--navy); /* Text/Link-Hover. Link hover and pressed on light surfaces. */
+  --text-link-on-soft: var(--navy); /* Added (not a Figma variable): links on surface-soft and surface-accent, e.g. footer and resource cards. Replaces blue there to pass AA (approved by Jerry). */
+  --text-link-on-tint: #22679f; /* Link blue for text on clinical-tint cards and white (5.69:1 on tint, 5.99:1 on white); blue #2b79b9 is 4.40:1 on the tint. InfoCard footer links, Quick Guide label text. */
+  --text-on-action: var(--white); /* Text/On-Action. Button label on action-primary-* fills (4.63:1 on default). */
+  --surface-page: var(--white); /* Surface/Page. Default canvas. */
+  --surface-soft: var(--pale-blue); /* Surface/Soft. Question panel, quote card, treatment band, footer, resource card. */
+  --surface-accent: var(--sky); /* Surface/Accent. Graphic fields only; no small text other than navy. */
+  --surface-inverse: var(--navy); /* Surface/Inverse. Closing CTA band. */
+  --surface-statistic: var(--clinical-tint); /* Surface/Statistic. Statistic cards. */
+  --border-subtle: var(--pale-blue); /* Border/Subtle. Decorative card borders (statistic card). Not for essential boundaries. */
+  --border-strong: var(--muted-navy); /* Border/Strong. Essential boundaries, partner logo tiles. */
+  --border-focus: var(--navy); /* Border/Focus. 2px keyboard focus ring on light surfaces (14.15:1). */
+  --action-primary-default: var(--blue); /* Action/Primary/Default. Primary button fill. */
+  --action-primary-hover: var(--navy); /* Action/Primary/Hover. Primary button hover fill. */
+  --action-primary-pressed: var(--muted-navy); /* Action/Primary/Pressed. Primary button pressed fill. */
+  --graphic-accent: var(--blue); /* Graphic/Accent. Accent rules, evidence brackets, question bracket, quote marks. */
+  --graphic-quiet: var(--sky); /* Graphic/Quiet. Quiet graphic fills; topographic pattern on light grounds. */
+  --error: #b42318; /* Added (not a Figma variable): form errors only — error field border (2px), error message text, the "!" mark fill and the error summary title/border. 6.57:1 on white, 6.05:1 on surface-error; white on it 6.57:1. Never decorative, never for emphasis or headings. */
+  --surface-error: #fef3f2; /* Added (not a Figma variable): tinted ground of a field in error and of the form error summary. Navy text on it 13.01:1. Form errors only. */
+  --tag-quick-guide: var(--blue); /* Format tag: Quick Guide. 4.63:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --tag-quick-guide-text: var(--text-link-on-tint); /* Quick Guide format label set as TEXT (resource rows): 5.69:1 on tint, 4.78:1 on sky. */
+  --tag-guideline: var(--navy); /* Format tag: Guideline. 14.15:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --tag-tool: #7a5c00; /* Format tag: Tool (dark gold). 6.25:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --tag-article: #3d4451; /* Format tag: Article (charcoal). 9.79:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --tag-video: #8e2f7a; /* Format tag: Video (berry). 7.40:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --tag-podcast: #4a4fb0; /* Format tag: Podcast (indigo). 6.92:1 with white. White label text (text-inverse) on it. Added (not a Figma variable) for resource format tags; the tag always names the format, so color is never the only cue. Tag set chosen to stay distinguishable under simulated deuteranopia, protanopia and tritanopia. */
+  --link-spanish: #0a6670; /* Added (not a Figma variable): the Spanish PDF link on bilingual resource cards (teal), so color also separates it from the navy English link. 5.79:1 on surface-soft, 6.67:1 on white; lighter than navy (2.1:1) so the pair differs in lightness. Only for that link. */
+  --graphic-silhouette: #bfd6e1; /* Asset color, not a Figma variable: the fill baked into the hero silhouette PNGs. Reference only — do not use for text. */
+}
+:root {
+  --space-0: 0px; /* Reset. */
+  --space-4: 4px; /* Hairline gaps. */
+  --space-8: 8px; /* Tight gaps; rule to heading. */
+  --space-12: 12px; /* Small gaps. */
+  --space-16: 16px; /* Grid gap (mobile); control vertical padding. */
+  --space-24: 24px; /* Within content groups; grid gap (desktop); card padding. */
+  --space-32: 32px; /* Within content groups. */
+  --space-40: 40px; /* Section padding (mobile); grid margin (tablet). */
+  --space-48: 48px; /* Button horizontal padding. */
+  --space-64: 64px; /* Large group spacing. */
+  --space-80: 80px; /* Section padding and grid margin (desktop). */
+  --space-96: 96px; /* Largest section spacing. */
+  --radius-none: 0px; /* Radius/None. Square corners: photo fade edges, bands. */
+  --radius-sm: 4px; /* Radius/SM. Subtle corners: statistic cards, partner tiles. */
+  --radius-md: 8px; /* Radius/MD. Buttons and panels. */
+  --radius-portrait: 10px; /* Radius/Portrait. Portrait crops. */
+  --radius-media: 20px; /* Radius/Media. Consultation photo, question panel, quote card. */
+  --stroke-border: 1px; /* Stroke/Border. Card and tile borders; link underline. */
+  --stroke-focus: 2px; /* Stroke/Focus. Focus ring width. */
+  --stroke-accent: 3px; /* Stroke/Accent. Accent rules above section headings and evidence brackets. Nov 20: 4 → 3px (lighter accents). */
+  --control-min-height: 48px; /* Control/Min-Height. Minimum height of every action target (buttons, links as actions, menu toggle). */
+  --tracking-normal: 0px; /* Tracking/Normal. All text except statistics. */
+  --tracking-display: -1px; /* Tracking/Display. Figma number variable, read as px. Statistic and Display (evidence) numerals. */
+  --accent-rule-width: 112px; /* Measured from frames: the blue accent rule above section headings is 112 × stroke-accent. */
+  --hero-rule-width: 100px; /* Measured from frames: the short rule under the hero subtitle is 100 × 3px. */
+  --stroke-thin-accent: 2px; /* Thin accent: hero rule, quote card side bar, callout and question brackets, card and stat mini rules. Nov 20: 3 → 2px. */
+  --page-width-desktop: 1440px; /* Layout/Page/Width (desktop reference canvas). */
+  --content-width-desktop: 1280px; /* Layout/Content/Width (desktop). Max width of the content column. */
+  --section-padding-desktop: 80px; /* Section top/bottom padding (desktop). Measured from the homepage frames (80 / 40 / 24); the Figma variable Layout/Section/Padding says 80 / 56 / 40. */
+  --prose-max-desktop: 720px; /* Layout/Prose/Max-Width (desktop). Readable line length. */
+  --grid-columns-desktop: 12; /* Grid/Columns (desktop). */
+  --grid-margin-desktop: 80px; /* Grid/Margin (desktop). Page side gutter. */
+  --grid-gap-desktop: 24px; /* Grid/Gap (desktop). Column gutter. */
+  --page-width-tablet: 768px; /* Layout/Page/Width (tablet reference canvas). */
+  --content-width-tablet: 688px; /* Layout/Content/Width (tablet). Max width of the content column. */
+  --section-padding-tablet: 40px; /* Section top/bottom padding (tablet). Measured from the homepage frames (80 / 40 / 24); the Figma variable Layout/Section/Padding says 80 / 56 / 40. */
+  --prose-max-tablet: 640px; /* Layout/Prose/Max-Width (tablet). Readable line length. */
+  --grid-columns-tablet: 8; /* Grid/Columns (tablet). */
+  --grid-margin-tablet: 40px; /* Grid/Margin (tablet). Page side gutter. */
+  --grid-gap-tablet: 20px; /* Grid/Gap (tablet). Column gutter. */
+  --page-width-mobile: 375px; /* Layout/Page/Width (mobile reference canvas). */
+  --content-width-mobile: 327px; /* Layout/Content/Width (mobile). Max width of the content column. */
+  --section-padding-mobile: 48px; /* Section top/bottom padding (mobile). Measured from the homepage frames (80 / 40 / 24); the Figma variable Layout/Section/Padding says 80 / 56 / 40. Nov 20: 24 → 48px so sections don’t run into each other on phones (fluid 48 → 80). */
+  --prose-max-mobile: 327px; /* Layout/Prose/Max-Width (mobile). Readable line length. */
+  --grid-columns-mobile: 4; /* Grid/Columns (mobile). */
+  --grid-margin-mobile: 24px; /* Grid/Margin (mobile). Page side gutter. */
+  --grid-gap-mobile: 16px; /* Grid/Gap (mobile). Column gutter. */
+  --fluid-min-width: 375px; /* Start of the fluid range. At and below this width, fluid type and spacing sit at their *-mobile values. */
+  --fluid-max-width: 1440px; /* End of the fluid range. At and above this width, fluid type and spacing sit at their *-desktop values and stop growing. */
+  --breakpoint-tablet: 768px; /* Guideline check width (the 768 reference canvas). Not a layout switch: layouts are fluid. Use a media query only where something breaks. */
+  --breakpoint-desktop: 1024px; /* SiteHeader only: full navigation from 1024px, Menu toggle below (the four links must not wrap). Not a general layout switch. */
+  --display-size-desktop: 96px; /* display size, desktop. */
+  --display-lh-desktop: 100px; /* display line height, desktop. */
+  --h1-size-desktop: 64px; /* h1 size, desktop. */
+  --h1-lh-desktop: 72px; /* h1 line height, desktop. */
+  --h2-size-desktop: 40px; /* h2 size, desktop. */
+  --h2-lh-desktop: 48px; /* h2 line height, desktop. */
+  --h3-size-desktop: 26px; /* h3 size, desktop. */
+  --h3-lh-desktop: 34px; /* h3 line height, desktop. */
+  --question-size-desktop: 32px; /* question size, desktop. */
+  --question-lh-desktop: 44px; /* question line height, desktop. */
+  --statement-size-desktop: 44px; /* statement size, desktop. */
+  --statement-lh-desktop: 56px; /* statement line height, desktop. */
+  --body-size-desktop: 18px; /* body size, desktop. */
+  --body-lh-desktop: 28px; /* body line height, desktop. */
+  --small-size-desktop: 14px; /* small size, desktop. */
+  --small-lh-desktop: 22px; /* small line height, desktop. */
+  --label-size-desktop: 16px; /* label size, desktop. */
+  --label-lh-desktop: 24px; /* label line height, desktop. */
+  --link-size-desktop: 18px; /* link size, desktop. */
+  --link-lh-desktop: 28px; /* link line height, desktop. */
+  --evidence-qualifier-size-desktop: 22px; /* evidence-qualifier size, desktop. */
+  --evidence-qualifier-lh-desktop: 32px; /* evidence-qualifier line height, desktop. */
+  --statistic-size-desktop: 80px; /* statistic size, desktop. */
+  --statistic-lh-desktop: 96px; /* statistic line height, desktop. */
+  --quotation-size-desktop: 34px; /* quotation size, desktop. */
+  --quotation-lh-desktop: 44px; /* quotation line height, desktop. */
+  --cta-size-desktop: 56px; /* cta size, desktop. */
+  --cta-lh-desktop: 68px; /* cta line height, desktop. */
+  --hero-lead-in-size-desktop: 36px; /* hero-lead-in size, desktop. */
+  --hero-lead-in-lh-desktop: 44px; /* hero-lead-in line height, desktop. */
+  --hero-highlight-size-desktop: 100px; /* hero-highlight size, desktop. */
+  --hero-highlight-lh-desktop: 112px; /* hero-highlight line height, desktop. */
+  --hero-continuation-size-desktop: 44px; /* hero-continuation size, desktop. */
+  --hero-continuation-lh-desktop: 56px; /* hero-continuation line height, desktop. */
+  --hero-subtitle-size-desktop: 20px; /* hero-subtitle size, desktop. */
+  --hero-subtitle-lh-desktop: 32px; /* hero-subtitle line height, desktop. */
+  --endnote-size-desktop: 10px; /* endnote size, desktop. */
+  --endnote-lh-desktop: 10px; /* endnote line height, desktop. */
+  --display-size-tablet: 72px; /* display size, tablet. */
+  --display-lh-tablet: 76px; /* display line height, tablet. */
+  --h1-size-tablet: 48px; /* h1 size, tablet. */
+  --h1-lh-tablet: 56px; /* h1 line height, tablet. */
+  --h2-size-tablet: 36px; /* h2 size, tablet. */
+  --h2-lh-tablet: 44px; /* h2 line height, tablet. */
+  --h3-size-tablet: 24px; /* h3 size, tablet. */
+  --h3-lh-tablet: 32px; /* h3 line height, tablet. */
+  --question-size-tablet: 28px; /* question size, tablet. */
+  --question-lh-tablet: 38px; /* question line height, tablet. */
+  --statement-size-tablet: 34px; /* statement size, tablet. */
+  --statement-lh-tablet: 46px; /* statement line height, tablet. */
+  --body-size-tablet: 18px; /* body size, tablet. */
+  --body-lh-tablet: 28px; /* body line height, tablet. */
+  --small-size-tablet: 14px; /* small size, tablet. */
+  --small-lh-tablet: 22px; /* small line height, tablet. */
+  --label-size-tablet: 16px; /* label size, tablet. */
+  --label-lh-tablet: 24px; /* label line height, tablet. */
+  --link-size-tablet: 18px; /* link size, tablet. */
+  --link-lh-tablet: 28px; /* link line height, tablet. */
+  --evidence-qualifier-size-tablet: 20px; /* evidence-qualifier size, tablet. */
+  --evidence-qualifier-lh-tablet: 30px; /* evidence-qualifier line height, tablet. */
+  --statistic-size-tablet: 64px; /* statistic size, tablet. */
+  --statistic-lh-tablet: 76px; /* statistic line height, tablet. */
+  --quotation-size-tablet: 28px; /* quotation size, tablet. */
+  --quotation-lh-tablet: 40px; /* quotation line height, tablet. */
+  --cta-size-tablet: 44px; /* cta size, tablet. */
+  --cta-lh-tablet: 56px; /* cta line height, tablet. */
+  --hero-lead-in-size-tablet: 28px; /* hero-lead-in size, tablet. */
+  --hero-lead-in-lh-tablet: 36px; /* hero-lead-in line height, tablet. */
+  --hero-highlight-size-tablet: 76px; /* hero-highlight size, tablet. */
+  --hero-highlight-lh-tablet: 88px; /* hero-highlight line height, tablet. */
+  --hero-continuation-size-tablet: 36px; /* hero-continuation size, tablet. */
+  --hero-continuation-lh-tablet: 46px; /* hero-continuation line height, tablet. */
+  --hero-subtitle-size-tablet: 18px; /* hero-subtitle size, tablet. */
+  --hero-subtitle-lh-tablet: 28px; /* hero-subtitle line height, tablet. */
+  --endnote-size-tablet: 10px; /* endnote size, tablet. */
+  --endnote-lh-tablet: 10px; /* endnote line height, tablet. */
+  --display-size-mobile: 48px; /* display size, mobile. */
+  --display-lh-mobile: 52px; /* display line height, mobile. */
+  --h1-size-mobile: 36px; /* h1 size, mobile. */
+  --h1-lh-mobile: 44px; /* h1 line height, mobile. */
+  --h2-size-mobile: 28px; /* h2 size, mobile. */
+  --h2-lh-mobile: 36px; /* h2 line height, mobile. */
+  --h3-size-mobile: 22px; /* h3 size, mobile. */
+  --h3-lh-mobile: 30px; /* h3 line height, mobile. */
+  --question-size-mobile: 24px; /* question size, mobile. */
+  --question-lh-mobile: 34px; /* question line height, mobile. */
+  --statement-size-mobile: 28px; /* statement size, mobile. */
+  --statement-lh-mobile: 38px; /* statement line height, mobile. */
+  --body-size-mobile: 18px; /* body size, mobile. */
+  --body-lh-mobile: 28px; /* body line height, mobile. */
+  --small-size-mobile: 14px; /* small size, mobile. */
+  --small-lh-mobile: 22px; /* small line height, mobile. */
+  --label-size-mobile: 16px; /* label size, mobile. */
+  --label-lh-mobile: 24px; /* label line height, mobile. */
+  --link-size-mobile: 18px; /* link size, mobile. */
+  --link-lh-mobile: 28px; /* link line height, mobile. */
+  --evidence-qualifier-size-mobile: 18px; /* evidence-qualifier size, mobile. */
+  --evidence-qualifier-lh-mobile: 28px; /* evidence-qualifier line height, mobile. */
+  --statistic-size-mobile: 48px; /* statistic size, mobile. */
+  --statistic-lh-mobile: 56px; /* statistic line height, mobile. */
+  --quotation-size-mobile: 24px; /* quotation size, mobile. */
+  --quotation-lh-mobile: 34px; /* quotation line height, mobile. */
+  --cta-size-mobile: 32px; /* cta size, mobile. */
+  --cta-lh-mobile: 42px; /* cta line height, mobile. */
+  --hero-lead-in-size-mobile: 24px; /* hero-lead-in size, mobile. */
+  --hero-lead-in-lh-mobile: 32px; /* hero-lead-in line height, mobile. */
+  --hero-highlight-size-mobile: 58px; /* hero-highlight size, mobile. */
+  --hero-highlight-lh-mobile: 68px; /* hero-highlight line height, mobile. */
+  --hero-continuation-size-mobile: 30px; /* hero-continuation size, mobile. */
+  --hero-continuation-lh-mobile: 40px; /* hero-continuation line height, mobile. */
+  --hero-subtitle-size-mobile: 18px; /* hero-subtitle size, mobile. */
+  --hero-subtitle-lh-mobile: 28px; /* hero-subtitle line height, mobile. */
+  --endnote-size-mobile: 10px; /* endnote size, mobile. */
+  --endnote-lh-mobile: 10px; /* endnote line height, mobile. */
+  --font-sans: Montserrat, "Helvetica Neue", Arial, sans-serif;
+  --text-display: 700 96px/100px var(--font-sans); /* Type/Display. Evidence statistic inside the bracket (57–64%). Blue. */
+  --text-h1: 800 64px/72px var(--font-sans); /* Type/H1. Interior page titles. */
+  --text-h2: 800 40px/48px var(--font-sans); /* Type/H2. Every section heading; starts a new section. */
+  --text-h3: 800 26px/34px var(--font-sans); /* Type/H3. Card and subsection titles. */
+  --text-question: 700 32px/44px var(--font-sans); /* Type/Question. The clinical question in compact panels. */
+  --text-statement: 800 44px/56px var(--font-sans); /* Type/Statement. The clinical question callout on the homepage; key words in blue. */
+  --text-body: 400 18px/28px var(--font-sans); /* Type/Body. All paragraphs; constant across modes. */
+  --text-small: 400 14px/22px var(--font-sans); /* Type/Small. References, captions, logo-tile labels, legal. */
+  --text-label: 600 16px/24px var(--font-sans); /* Type/Label. Navigation, eyebrows, button labels, quote attribution. */
+  --text-evidence-qualifier: 700 22px/32px var(--font-sans); /* Type/Evidence-Qualifier. Sentence under the evidence statistic. */
+  --text-statistic: 700 80px/96px var(--font-sans); /* Type/Statistic. Statistic card value. Blue. */
+  --text-quotation: 800 34px/44px var(--font-sans); /* Type/Quotation. Clinician quote text. */
+  --text-cta: 800 56px/68px var(--font-sans); /* Type/CTA. Closing campaign line on navy; lead words in sky. */
+  --text-hero-lead-in: 800 36px/44px var(--font-sans); /* Type/Hero Lead-in. 'More than'. */
+  --text-hero-highlight: 800 100px/112px var(--font-sans); /* Hero number '40 million', blue. Hero-specific: tablet 76/88 and mobile 58/68 are measured from the homepage frames and override the Figma variable (56/68, 52/64). */
+  --text-hero-continuation: 800 44px/56px var(--font-sans); /* Type/Hero Continuation. 'Americans live with migraine'. Hero-specific: tablet 36/46 is measured from the frames (variable says 32/42). */
+  --text-hero-subtitle: 600 20px/32px var(--font-sans); /* Hero care-gap subtitle. Hero-specific, measured from frames (no Figma variable). '1 in 3' set in ExtraBold. */
+  --text-endnote: 500 10px/10px var(--font-sans); /* Endnote marker (superscript reference number). One fixed size everywhere, independent of the surrounding text, as in the frames. */
+  --text-small-italic: italic 500 14px/22px var(--font-sans); /* 'Led by:' attribution in the hero. Medium italic, measured from frames. */
+  --text-display-tablet: 700 72px/76px var(--font-sans); /* Type/Display. Evidence statistic inside the bracket (57–64%). Blue. */
+  --text-h1-tablet: 800 48px/56px var(--font-sans); /* Type/H1. Interior page titles. */
+  --text-h2-tablet: 800 36px/44px var(--font-sans); /* Type/H2. Every section heading; starts a new section. */
+  --text-h3-tablet: 800 24px/32px var(--font-sans); /* Type/H3. Card and subsection titles. */
+  --text-question-tablet: 700 28px/38px var(--font-sans); /* Type/Question. The clinical question in compact panels. */
+  --text-statement-tablet: 800 34px/46px var(--font-sans); /* Type/Statement. The clinical question callout on the homepage; key words in blue. */
+  --text-body-tablet: 400 18px/28px var(--font-sans); /* Type/Body. All paragraphs; constant across modes. */
+  --text-small-tablet: 400 14px/22px var(--font-sans); /* Type/Small. References, captions, logo-tile labels, legal. */
+  --text-label-tablet: 600 16px/24px var(--font-sans); /* Type/Label. Navigation, eyebrows, button labels, quote attribution. */
+  --text-link-tablet: 600 18px/28px var(--font-sans); /* Body-size action link (See the Question →). Measured SemiBold from frames. */
+  --text-evidence-qualifier-tablet: 700 20px/30px var(--font-sans); /* Type/Evidence-Qualifier. Sentence under the evidence statistic. */
+  --text-statistic-tablet: 700 64px/76px var(--font-sans); /* Type/Statistic. Statistic card value. Blue. */
+  --text-quotation-tablet: 800 28px/40px var(--font-sans); /* Type/Quotation. Clinician quote text. */
+  --text-cta-tablet: 800 44px/56px var(--font-sans); /* Type/CTA. Closing campaign line on navy; lead words in sky. */
+  --text-hero-lead-in-tablet: 800 28px/36px var(--font-sans); /* Type/Hero Lead-in. 'More than'. */
+  --text-hero-highlight-tablet: 800 76px/88px var(--font-sans); /* Hero number '40 million', blue. Hero-specific: tablet 76/88 and mobile 58/68 are measured from the homepage frames and override the Figma variable (56/68, 52/64). */
+  --text-hero-continuation-tablet: 800 36px/46px var(--font-sans); /* Type/Hero Continuation. 'Americans live with migraine'. Hero-specific: tablet 36/46 is measured from the frames (variable says 32/42). */
+  --text-hero-subtitle-tablet: 600 18px/28px var(--font-sans); /* Hero care-gap subtitle. Hero-specific, measured from frames (no Figma variable). '1 in 3' set in ExtraBold. */
+  --text-endnote-tablet: 500 10px/10px var(--font-sans); /* Endnote marker (superscript reference number). One fixed size everywhere, independent of the surrounding text, as in the frames. */
+  --text-display-mobile: 700 48px/52px var(--font-sans); /* Type/Display. Evidence statistic inside the bracket (57–64%). Blue. */
+  --text-h1-mobile: 800 36px/44px var(--font-sans); /* Type/H1. Interior page titles. */
+  --text-h2-mobile: 800 28px/36px var(--font-sans); /* Type/H2. Every section heading; starts a new section. */
+  --text-h3-mobile: 800 22px/30px var(--font-sans); /* Type/H3. Card and subsection titles. */
+  --text-question-mobile: 700 24px/34px var(--font-sans); /* Type/Question. The clinical question in compact panels. */
+  --text-statement-mobile: 800 28px/38px var(--font-sans); /* Type/Statement. The clinical question callout on the homepage; key words in blue. */
+  --text-body-mobile: 400 18px/28px var(--font-sans); /* Type/Body. All paragraphs; constant across modes. */
+  --text-small-mobile: 400 14px/22px var(--font-sans); /* Type/Small. References, captions, logo-tile labels, legal. */
+  --text-label-mobile: 600 16px/24px var(--font-sans); /* Type/Label. Navigation, eyebrows, button labels, quote attribution. */
+  --text-link-mobile: 600 18px/28px var(--font-sans); /* Body-size action link (See the Question →). Measured SemiBold from frames. */
+  --text-evidence-qualifier-mobile: 700 18px/28px var(--font-sans); /* Type/Evidence-Qualifier. Sentence under the evidence statistic. */
+  --text-statistic-mobile: 700 48px/56px var(--font-sans); /* Type/Statistic. Statistic card value. Blue. */
+  --text-quotation-mobile: 800 24px/34px var(--font-sans); /* Type/Quotation. Clinician quote text. */
+  --text-cta-mobile: 800 32px/42px var(--font-sans); /* Type/CTA. Closing campaign line on navy; lead words in sky. */
+  --text-hero-lead-in-mobile: 800 24px/32px var(--font-sans); /* Type/Hero Lead-in. 'More than'. */
+  --text-hero-highlight-mobile: 800 58px/68px var(--font-sans); /* Hero number '40 million', blue. Hero-specific: tablet 76/88 and mobile 58/68 are measured from the homepage frames and override the Figma variable (56/68, 52/64). */
+  --text-hero-continuation-mobile: 800 30px/40px var(--font-sans); /* Type/Hero Continuation. 'Americans live with migraine'. Hero-specific: tablet 36/46 is measured from the frames (variable says 32/42). */
+  --text-hero-subtitle-mobile: 600 18px/28px var(--font-sans); /* Hero care-gap subtitle. Hero-specific, measured from frames (no Figma variable). '1 in 3' set in ExtraBold. */
+  --text-endnote-mobile: 500 10px/10px var(--font-sans); /* Endnote marker (superscript reference number). One fixed size everywhere, independent of the surrounding text, as in the frames. */
+}
+.display {
+  font-family: var(--font-sans);
+  font-size: 96px;
+  line-height: 100px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.h1 {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  line-height: 72px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h2 {
+  font-family: var(--font-sans);
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h3 {
+  font-family: var(--font-sans);
+  font-size: 26px;
+  line-height: 34px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.question {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  line-height: 44px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statement {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.small {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.label {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.link {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.evidence-qualifier {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statistic {
+  font-family: var(--font-sans);
+  font-size: 80px;
+  line-height: 96px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.quotation {
+  font-family: var(--font-sans);
+  font-size: 34px;
+  line-height: 44px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.cta {
+  font-family: var(--font-sans);
+  font-size: 56px;
+  line-height: 68px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-lead-in {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-highlight {
+  font-family: var(--font-sans);
+  font-size: 100px;
+  line-height: 112px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-continuation {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-subtitle {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.endnote {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+.small-italic {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0;
+  font-style: italic;
+}
+.display-tablet {
+  font-family: var(--font-sans);
+  font-size: 72px;
+  line-height: 76px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.h1-tablet {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h2-tablet {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h3-tablet {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.question-tablet {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statement-tablet {
+  font-family: var(--font-sans);
+  font-size: 34px;
+  line-height: 46px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.body-tablet {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.small-tablet {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.label-tablet {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.link-tablet {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.evidence-qualifier-tablet {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statistic-tablet {
+  font-family: var(--font-sans);
+  font-size: 64px;
+  line-height: 76px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.quotation-tablet {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.cta-tablet {
+  font-family: var(--font-sans);
+  font-size: 44px;
+  line-height: 56px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-lead-in-tablet {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-highlight-tablet {
+  font-family: var(--font-sans);
+  font-size: 76px;
+  line-height: 88px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-continuation-tablet {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  line-height: 46px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-subtitle-tablet {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.endnote-tablet {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+.display-mobile {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 52px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.h1-mobile {
+  font-family: var(--font-sans);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h2-mobile {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.h3-mobile {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.question-mobile {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statement-mobile {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.body-mobile {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.small-mobile {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+.label-mobile {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.link-mobile {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.evidence-qualifier-mobile {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  letter-spacing: 0px;
+}
+.statistic-mobile {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.quotation-mobile {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 34px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.cta-mobile {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  line-height: 42px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-lead-in-mobile {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-highlight-mobile {
+  font-family: var(--font-sans);
+  font-size: 58px;
+  line-height: 68px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-continuation-mobile {
+  font-family: var(--font-sans);
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 800;
+  letter-spacing: 0px;
+}
+.hero-subtitle-mobile {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: 0px;
+}
+.endnote-mobile {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 500;
+  letter-spacing: 0px;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-800-normal.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("fonts/Montserrat-500-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}

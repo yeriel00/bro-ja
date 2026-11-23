@@ -1,0 +1,13 @@
+/* Just Ask. — PullQuote styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   PullQuote — clinician quote. Default (quotation style) and --compact (inside cards / subsections)
+   ===================================================================== */
+.ja-pullquote { margin: 0; }
+.ja-pullquote__mark { display: block; height: 36px; color: var(--graphic-accent); font-weight: 800; font-size: 64px; line-height: 64px; }
+.ja-pullquote__cite { display: block; margin-top: var(--space-16); color: var(--text-muted); font-style: normal; }
+.ja-pullquote--compact .ja-pullquote__mark { height: 26px; font-size: 48px; line-height: 48px; }
+.ja-pullquote--compact .ja-pullquote__cite { margin-top: var(--space-12); font-size: 14px; line-height: 22px; }
+/* Finding variant (StatisticGrid findings rows) */
+.ja-pullquote--finding .ja-pullquote__mark { height: 30px; font-size: 56px; line-height: 56px; }
+.ja-pullquote--finding .ja-evidence-qualifier { color: var(--text-default); }
+.ja-pullquote--finding .ja-pullquote__cite { margin-top: var(--space-12); font-size: 14px; line-height: 22px; }

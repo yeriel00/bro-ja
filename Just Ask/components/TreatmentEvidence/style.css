@@ -1,0 +1,26 @@
+/* Just Ask. — TreatmentEvidence styles. Needs foundations (tokens.css + components/bundle.css) and components/ActionLink/style.css. */
+/* ---------- 10b Treatment + evidence statistic ---------- */
+/* Fluid (Nov 20): spacing and bracket size scale (tablet values reached by 768); the text | evidence split is a
+   container query on the section (`ja-treatment`, 64rem). No media queries. */
+.ja-treatment { container: ja-treatment / inline-size; background: var(--surface-soft); }
+.ja-treatment__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(30px, 20.458px + 2.5445vw, 40px); }
+.ja-treatment__text .ja-prose { margin-top: 24px; }
+.ja-treatment__text .ja-link { margin-top: clamp(14px, 4.458px + 2.5445vw, 24px); }
+.ja-evidence {
+  --ja-arm: clamp(12px, 0.550px + 3.0534vw, 24px);   /* bracket arms 12 → 24 */
+  position: relative;
+  margin: 0;
+  padding: 0 clamp(28px, 1.282px + 7.1247vw, 56px);
+  color: var(--text-default);
+}
+.ja-evidence::before, .ja-evidence::after {   /* evidence brackets: 3px bars */
+  content: ""; position: absolute; top: -3px; bottom: -3px; width: var(--ja-arm);
+  border: var(--stroke-thin-accent) solid var(--graphic-accent);
+}
+.ja-evidence::before { left: 0; border-right: 0; }
+.ja-evidence::after { right: 0; border-left: 0; }
+.ja-evidence__value { display: block; color: var(--blue); }
+.ja-evidence__text { margin: clamp(24px, 23.296px + 0.1878vw, 26px) 0 0; }
+@container ja-treatment (min-width: 64rem) {
+  .ja-treatment__grid { grid-template-columns: minmax(0, 464fr) minmax(0, 736fr); column-gap: clamp(40px, 25.915px + 3.7559vw, 80px); align-items: center; }
+}

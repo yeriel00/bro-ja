@@ -1,0 +1,33 @@
+/* Just Ask. — ResourceLibrary styles. Needs foundations (tokens.css + components/bundle.css), ResourceCard, Button. Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   FilterBar + results (Resource Library) — one row of native selects
+   ===================================================================== */
+.ja-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(16px, 13.183px + 0.7512vw, 24px); margin: 0; padding: 0; border: 0; }   /* 3 across when each select gets 200px, else stacked */
+.ja-select-field { display: flex; flex-direction: column; gap: var(--space-8); min-width: 0; }
+.ja-select { width: 100%; min-height: var(--control-min-height); padding: 0 var(--space-48) 0 var(--space-16); box-sizing: border-box;
+  border: var(--stroke-border) solid var(--border-strong); border-radius: var(--radius-md); background-color: var(--surface-page);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M1 1l6 6 6-6' fill='none' stroke='%23072a59' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 18px center; background-size: 14px 9px;
+  color: var(--text-default); font: 400 18px/28px var(--font-sans); appearance: none; -webkit-appearance: none; cursor: pointer;
+  text-overflow: ellipsis; transition: border-color var(--ja-duration-hover) var(--ja-ease), background-color var(--ja-duration-hover) var(--ja-ease); }
+.ja-select:hover { background-color: var(--surface-soft); }
+.ja-select:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+/* A filter that is on: navy 2px edge and SemiBold value, so the active set reads at a glance */
+.ja-select.is-active { border: var(--stroke-focus) solid var(--navy); font-weight: 600; padding-left: 15px; }
+.ja-results-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 var(--space-24); min-height: var(--control-min-height); margin-top: var(--space-16); }
+.ja-results-count { font-weight: 600; }
+.ja-text-button { min-height: var(--control-min-height); padding: 0; border: 0; background: none; color: var(--text-link); font: 600 16px/24px var(--font-sans);
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer; transition: color var(--ja-duration-hover) var(--ja-ease); }
+.ja-text-button:hover { color: var(--text-link-hover); }
+.ja-text-button:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-results-group { margin-top: var(--space-40); }
+.ja-results-group__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-4) var(--space-12); padding-bottom: var(--space-16); border-bottom: var(--stroke-border) solid var(--graphic-quiet); }
+.ja-results-group__count { white-space: nowrap; color: var(--text-muted); font-size: 14px; line-height: 22px; font-weight: 600; }
+.ja-results-grid { display: grid; gap: var(--space-24); margin: var(--space-24) 0 0; padding: 0; list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 300px), calc((100% - 2 * var(--space-24)) / 3)), 1fr)); }   /* 1 → 2 → 3, intrinsic */
+.ja-results-grid > li { display: flex; }
+.ja-results-grid .ja-resource { width: 100%; }
+.ja-empty { margin-top: var(--space-40); padding: var(--space-40) var(--space-24); border-radius: var(--radius-md); background: var(--surface-soft); text-align: center; }
+.ja-empty p + p { margin-top: var(--space-8); }
+/* 3. Resource Library empty state: the whole brain, small, in blue, as a spot illustration. */
+.ja-empty__mark { position: relative; display: block; width: 48px; aspect-ratio: 700 / 869; margin: 0 auto var(--space-16); --ja-pattern-ink: var(--graphic-accent); }

@@ -1,0 +1,7 @@
+- **Campaign mark:**
+  - `just-ask-full-color.svg` (navy + blue) is the default on white and pale blue.
+  - `just-ask-white.svg` is for the navy CTA band.
+  - `just-ask-navy.svg`, `just-ask-blue.svg` and `just-ask-black.svg` are single-ink versions for one-color use.
+- **AHS mark:** `ahs-horizontal-2-color.svg` is the official AHS logo (dark red `#6f0f10` and near-black). Use it only for "Led by:" and partner attribution, at its own colors, on white.
+- **Clear space:** keep at least the cap height of "Ask." clear around either mark.
+- **Never** redraw, recolor or crop a logo.

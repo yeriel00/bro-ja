@@ -1,0 +1,93 @@
+/* Just Ask. — Hero styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 02 Campaign statement (hero) ---------- */
+/* Fluid (Nov 20): text inset, text width, spacing and face-grid geometry scale from 375 to 1440.
+   The text column is sized from the highlight type (5.4em of "40 million", which is 5.34em wide), so the number
+   never wraps whatever the width. The only media queries left are the veil's art direction (decorative). */
+.ja-hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 570px;   /* mobile frame height; content sets it from ~800 up */
+  background: var(--surface-page);
+  --ja-pitch: clamp(54.67px, 52.793px + 0.5005vw, 60px);   /* face-grid cell pitch: 54.67 → 60 */
+  --ja-cell: calc(var(--ja-pitch) * 0.8445);               /* cell size: 50.67 at 60 */
+  --ja-grid-top: clamp(27px, 19.606px + 1.9718vw, 48px);
+  --ja-grid-left: clamp(-28px, 2.6291vw - 37.859px, 0px);
+  --ja-hero-inset: clamp(0px, 8.6385vw - 32.394px, 92px);  /* extra text inset beyond the margin: 0 → 92 */
+  --ja-hero-text: max(calc(var(--ja-hero-highlight-size) * 5.4), 21rem);  /* 540 at 1440; the column below ~620 */
+}
+.ja-facegrid {
+  position: absolute;
+  left: var(--ja-grid-left);
+  top: var(--ja-grid-top);
+  width: calc(var(--ja-pitch) * 24);
+  height: calc(var(--ja-pitch) * 9);
+  margin: 0; padding: 0; list-style: none;
+  display: grid;
+  grid-template-columns: repeat(24, var(--ja-pitch));
+  grid-auto-rows: var(--ja-pitch);
+}
+.ja-facegrid li { position: relative; width: var(--ja-cell); height: var(--ja-cell); }
+.ja-facegrid img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  transition: opacity var(--ja-duration-fade) ease-in-out;
+}
+.ja-facegrid .is-sil .ja-f, .ja-facegrid .is-face .ja-s { opacity: 0; }
+.ja-facegrid .is-sil .ja-s, .ja-facegrid .is-face .ja-f { opacity: 1; }
+/* Silhouette → face is slower than face → silhouette: the duration follows the state being entered. */
+.ja-facegrid .is-face img { transition-duration: var(--ja-duration-silhouette-out); }
+.ja-facegrid .is-sil img { transition-duration: var(--ja-duration-fade); }
+.ja-hero__veil {                     /* white fade over the grid, measured from the frames */
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0) calc(100% - 100px), #fff calc(100% - 36px)),
+    linear-gradient(90deg, rgba(255,255,255,.88) 0%, rgba(255,255,255,.95) 19%, rgba(255,255,255,.95) 85%, rgba(255,255,255,0) 141%);
+}
+.ja-hero__content {
+  position: relative;
+  padding-top: clamp(56px, 44.38px + 3.0986vw, 89px);
+  padding-bottom: 40px;
+  padding-left: calc(var(--ja-margin) + var(--ja-hero-inset));
+}
+.ja-hero__content > h1, .ja-hero__subtitle { max-width: var(--ja-hero-text); }
+.ja-hero__lead, .ja-hero__number, .ja-hero__line { display: block; color: var(--text-default); }
+.ja-hero__number { color: var(--blue); }
+.ja-hero__subtitle { margin: clamp(15px, 20.408px - 0.3756vw, 19px) 0 0; color: var(--text-default); }
+.ja-hero__subtitle strong { font-weight: 800; }
+.ja-hero__rule { display: block; width: var(--hero-rule-width); height: var(--stroke-thin-accent); margin-top: clamp(16px, 22.761px - 0.4695vw, 21px); background: var(--graphic-accent); }
+.ja-hero__led {
+  display: flex; align-items: center; gap: var(--space-16);
+  margin-top: 23px;
+  color: var(--text-default);
+}
+.ja-hero__led img { display: block; width: 121px; height: auto; }
+.ja-hero__pause {
+  position: absolute; right: var(--ja-margin); bottom: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: var(--control-min-height); padding: 0 var(--space-12);
+  border: 0; border-radius: var(--radius-md);
+  background: rgba(255,255,255,.9); color: var(--text-muted);
+  font: 600 14px/22px var(--font-sans); cursor: pointer;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+}
+.ja-hero__pause:hover { color: var(--text-default); }
+.ja-hero__pause:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+.ja-hero__pause svg { width: 12px; height: 12px; fill: currentColor; }
+.ja-hero__pause .ja-play { display: none; }
+.ja-hero.is-paused .ja-hero__pause .ja-play { display: block; }
+.ja-hero.is-paused .ja-hero__pause .ja-pausei { display: none; }
+@media (prefers-reduced-motion: reduce) { .ja-hero__pause { display: none; } .ja-facegrid img { transition: none; } }
+.ja-hero:not(.is-animated) .ja-hero__pause { display: none; }
+/* Veil art direction: the fade is tuned to each reference layout's text area. Decorative only (the grid is aria-hidden);
+   text stays on ≥ .8 white at every width. */
+@media (min-width: 768px) {
+  .ja-hero__veil {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0) calc(100% - 100px), #fff calc(100% - 20px)),
+      linear-gradient(90deg, rgba(255,255,255,.8) 0%, rgba(255,255,255,.95) 6%, rgba(255,255,255,.95) 56%, rgba(255,255,255,0) 98%);
+  }
+}
+@media (min-width: 1024px) {
+  .ja-hero__veil {
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0px, rgba(255,255,255,.95) 140px, rgba(255,255,255,.95) 54%, rgba(255,255,255,0) 96%);
+  }
+}

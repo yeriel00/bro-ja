@@ -1,0 +1,36 @@
+/* Just Ask. — SiteFooter styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 09b Campaign footer ---------- */
+/* Fluid (Nov 20): the footer responds to its own width (container `ja-footer`), not the viewport.
+   Narrow: everything stacked, nav links in a column (48px targets).
+   From 40rem: nav links in a wrapping row.
+   From 56rem: copyright | legal side by side. From 64rem: logo | nav side by side (the nav may wrap beside the logo). */
+.ja-footer { container: ja-footer / inline-size; background: var(--surface-soft); color: var(--text-default); }
+.ja-footer > .ja-container { padding-block: clamp(32px, 26.366px + 1.5023vw, 48px); }
+.ja-footer__top { display: flex; flex-direction: column; }
+.ja-footer__logo { align-self: flex-start; line-height: 0; }
+.ja-footer__logo img { display: block; width: 190px; height: auto; }
+.ja-footer__nav { margin-top: 14px; }
+.ja-footer__nav ul { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.ja-footer__nav a, .ja-footer__legal a {
+  display: inline-flex; align-items: center; min-height: var(--control-min-height);
+  color: var(--text-link-on-soft); text-decoration: none;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+}
+.ja-footer__nav a:hover, .ja-footer__legal a:hover { color: var(--text-muted); text-decoration: underline; }
+.ja-footer__logo:focus-visible, .ja-footer__nav a:focus-visible, .ja-footer__legal a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 0; }
+.ja-footer__bottom { display: flex; flex-direction: column; margin-top: clamp(10px, 5.070px + 1.3146vw, 24px); color: var(--text-muted); }
+.ja-footer__legal { display: flex; flex-wrap: wrap; column-gap: var(--space-24); margin: 8px 0 0; padding: 0; list-style: none; }
+@container ja-footer (min-width: 40rem) {
+  .ja-footer__nav { margin-top: 22px; }
+  .ja-footer__nav ul { flex-direction: row; flex-wrap: wrap; column-gap: var(--space-24); row-gap: 16px; }
+  .ja-footer__nav a { min-height: 24px; }
+}
+@container ja-footer (min-width: 64rem) {
+  .ja-footer__top { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-24); }
+  .ja-footer__nav { margin-top: 0; }
+  .ja-footer__nav a { min-height: var(--control-min-height); }
+}
+@container ja-footer (min-width: 56rem) {
+  .ja-footer__bottom { flex-direction: row; align-items: center; justify-content: space-between; gap: var(--space-24); }
+  .ja-footer__legal { margin-top: 0; }
+}

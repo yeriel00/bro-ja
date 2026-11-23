@@ -1,0 +1,25 @@
+/* Just Ask. — FeaturedResource styles. Needs foundations (tokens.css + components/bundle.css), Button; ResourceCard (format tag). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   FeaturedResource — one highlighted tool or download
+   ===================================================================== */
+.ja-featured { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); align-items: center; padding: clamp(24px, 15.549px + 2.2535vw, 48px);
+  border-radius: var(--radius-media); background: var(--surface-soft); color: var(--text-default); }
+@container ja-content (min-width: 54rem) { .ja-featured { grid-template-columns: minmax(0, 1fr) 360px; gap: var(--space-64); } }
+/* Nov 20: the format shows as the Resource Library format tag (ResourceCard .ja-tag--format), so a featured tool reads the same as its card in the Library. */
+.ja-featured__tag { margin-bottom: var(--space-12); }
+.ja-featured__text { margin-top: var(--space-12); max-width: 560px; }
+.ja-featured__actions { display: flex; flex-wrap: wrap; gap: var(--space-16) var(--space-24); align-items: center; margin-top: var(--space-24); }
+.ja-featured__preview { display: flex; align-items: center; justify-content: center; aspect-ratio: 4 / 3; border-radius: var(--radius-md);
+  background: var(--surface-page); border: var(--stroke-border) solid var(--graphic-quiet); color: var(--text-muted); font-size: 14px; line-height: 22px; text-align: center; padding: var(--space-24); }
+
+/* With an image (ACF preview_image): the image fills the preview frame, cropped to 4:3, corners kept. */
+.ja-featured__preview:has(img) { padding: 0; overflow: hidden; }
+.ja-featured__preview img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* 2. FeaturedResource: inverse ink. A white brain, rotated, tucked into a corner the content leaves empty:
+   top-right on mobile and tablet (beside the heading), bottom-left on desktop (under the button; the preview fills the right). */
+.ja-featured { position: relative; overflow: hidden; }
+.ja-featured > :not(.ja-pattern) { position: relative; z-index: 1; }
+.ja-featured__pattern { --ja-pattern-ink: var(--white); opacity: .75; aspect-ratio: 700 / 869; transform: rotate(24deg);
+  width: clamp(260px, 203.662px + 15.0235vw, 420px); top: clamp(-260px, -192.394px - 4.6948vw, -210px); right: clamp(-130px, -102.958px - 1.8779vw, -110px); }
+/* Placement follows the layout: once the preview sits on the right, the brain moves to the bottom-left under the button. */
+@container ja-content (min-width: 54rem) { .ja-featured__pattern { top: auto; right: auto; left: -210px; bottom: -390px; transform: rotate(155deg); } }

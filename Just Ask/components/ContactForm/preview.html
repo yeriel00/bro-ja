@@ -1,0 +1,12 @@
+<!-- @dsCard group="Interior sections" height=920 width=1440 subtitle="Contact — social icons, fields, error summary and inline errors" -->
+<div class="ja-root" style="--ja-pattern-url:url('/_blob/06096fbc835bb04738472ba836d056b8')">
+  <link rel="stylesheet" href="../../components/ContactForm/style.css"><link rel="stylesheet" href="../../components/Button/style.css">
+<section class="ja-section ja-contact-section"><div class="ja-container ja-contact">
+<aside class="ja-contact__aside"><h2 class="ja-label">Social media</h2><ul class="ja-social"><li><a class="ja-social__link" href="#" aria-label="[Platform 1]"><span class="ja-social__icon" aria-hidden="true"></span></a></li><li><a class="ja-social__link" href="#" aria-label="[Platform 2]"><span class="ja-social__icon" aria-hidden="true"></span></a></li></ul></aside>
+<form class="ja-form" novalidate><div class="ja-form-alert" role="alert" tabindex="-1"><p class="ja-body ja-form-alert__title">Check 2 fields before sending</p><ul class="ja-body"><li><a href="#c-email">Enter an email address like name@example.com</a></li><li><a href="#c-msg">Enter a message</a></li></ul></div>
+<div class="ja-form__row"><div class="ja-field"><label class="ja-field__label" for="c-name">Name</label><input class="ja-input" id="c-name" type="text"></div><div class="ja-field is-error"><label class="ja-field__label" for="c-email">Email</label><input class="ja-input" id="c-email" type="email" aria-invalid="true"><p class="ja-field__error"><span class="ja-field__error-mark" aria-hidden="true">!</span>Enter an email address like name@example.com</p></div></div>
+<div class="ja-form__row"><div class="ja-field"><label class="ja-field__label" for="c-phone">Phone number <span class="ja-field__hint">(optional)</span></label><input class="ja-input" id="c-phone" type="tel"></div><div class="ja-field"><label class="ja-field__label" for="c-subj">Subject</label><input class="ja-input" id="c-subj" type="text"></div></div>
+<div class="ja-field is-error"><label class="ja-field__label" for="c-msg">Message</label><textarea class="ja-input" id="c-msg" aria-invalid="true"></textarea><p class="ja-field__error"><span class="ja-field__error-mark" aria-hidden="true">!</span>Enter a message</p></div>
+<div class="ja-form__actions"><button type="submit" class="ja-button">Send Message</button></div></form>
+</div></section>
+</div>

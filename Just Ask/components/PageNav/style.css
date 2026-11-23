@@ -1,0 +1,27 @@
+/* Just Ask. — PageNav styles. Needs foundations (tokens.css + components/bundle.css), ActionLink. Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   PageNav — end-of-page wayfinding: back/all link + next page
+   ===================================================================== */
+.ja-pagenav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-24);
+  padding-top: var(--space-32); border-top: var(--stroke-border) solid var(--graphic-quiet); }
+.ja-pagenav__next { display: flex; align-items: center; gap: var(--space-24); min-height: 88px; padding: var(--space-16) var(--space-24);
+  border-radius: var(--radius-md); background: var(--surface-soft); color: var(--text-default); text-decoration: none;
+  transition: background-color var(--ja-duration-hover) var(--ja-ease); }
+.ja-pagenav__next:hover { background: var(--sky); }
+.ja-pagenav__next:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-pagenav__kicker { display: block; font-size: 14px; line-height: 22px; font-weight: 600; color: var(--text-muted); }
+.ja-pagenav__title { display: block; }
+.ja-pagenav__next .ja-arrow { width: 16px; height: 28px; }
+@container ja-content (max-width: 40rem) { .ja-pagenav__next { width: 100%; justify-content: space-between; } }
+/* Nov 20 (Jerry), step pages: back card on the left (previous page; same grey card, arrow first and pointing left), next-step
+   card on the right with a plain "Browse the Resource Library" text link under it. Last step (Ongoing care) has no next card,
+   so only the link sits on the right. Phones: back, next, link stack full width. ACF: prev/next come from the step order in
+   the options-page repeater; the Library link is a global setting. */
+.ja-pagenav { align-items: flex-start; }
+.ja-pagenav__prev .ja-arrow { transform: scaleX(-1); }
+.ja-pagenav__group { display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-4); margin-left: auto; }
+@container ja-content (max-width: 40rem) {
+  .ja-pagenav__prev { justify-content: flex-start; }
+  .ja-pagenav__group { width: 100%; align-items: stretch; }
+  .ja-pagenav__group .ja-pagenav__library { align-self: flex-start; }
+}

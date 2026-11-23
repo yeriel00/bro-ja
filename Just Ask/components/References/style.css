@@ -1,0 +1,10 @@
+/* Just Ask. — References styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 09a References ---------- */
+/* Fluid (Nov 20): no media queries. Padding follows the section padding but stops at 48 (end matter stays compact). */
+.ja-refs { padding-block: min(var(--ja-section), 48px); background: var(--surface-statistic); }   /* clinical tint (Nov 19): sets the end matter apart from the page */
+.ja-refs__note, .ja-refs__list { margin: clamp(8px, 6.592px + 0.3756vw, 12px) 0 0; }   /* 8 at 375 → 12 at 1440 */
+.ja-refs__note { color: var(--text-muted); }
+.ja-refs__list { padding: 0 0 0 44px; color: var(--text-default); }
+.ja-refs__list li { padding-left: 0; }
+.ja-refs__list li + li { margin-top: 8px; }
+.ja-refs__list li::marker { color: var(--text-default); font-weight: 600; }   /* navy: blue is 4.4:1 on the tint, under AA for 14px numbers */

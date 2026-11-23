@@ -1,0 +1,765 @@
+{
+  "manifestVersion": 3,
+  "name": "Just Ask.",
+  "namespace": "JustAsk",
+  "files": [
+    "CHANGELOG.md",
+    "assets/Hero/README.md",
+    "assets/Logos/README.md",
+    "assets/Patterns/README.md",
+    "assets/Photography/README.md",
+    "assets/Portraits/README.md",
+    "components/ActionLink/README.md",
+    "components/ActionLink/style.css",
+    "components/Button/README.md",
+    "components/Button/style.css",
+    "components/Callout/README.md",
+    "components/Callout/style.css",
+    "components/CardGrid/README.md",
+    "components/CardGrid/style.css",
+    "components/ClinicalQuestion/README.md",
+    "components/ClinicalQuestion/style.css",
+    "components/ContactForm/README.md",
+    "components/ContactForm/style.css",
+    "components/CtaBand/README.md",
+    "components/CtaBand/style.css",
+    "components/DataBars/README.md",
+    "components/DataBars/style.css",
+    "components/FeaturedResource/README.md",
+    "components/FeaturedResource/style.css",
+    "components/Hero/README.md",
+    "components/Hero/style.css",
+    "components/HomePage/README.md",
+    "components/IntroMedia/README.md",
+    "components/IntroMedia/style.css",
+    "components/ListBlock/README.md",
+    "components/ListBlock/style.css",
+    "components/PageHero/README.md",
+    "components/PageHero/style.css",
+    "components/PageNav/README.md",
+    "components/PageNav/style.css",
+    "components/PartnerAttribution/README.md",
+    "components/PartnerAttribution/style.css",
+    "components/PullQuote/README.md",
+    "components/PullQuote/style.css",
+    "components/QuoteBand/README.md",
+    "components/QuoteBand/style.css",
+    "components/References/README.md",
+    "components/References/style.css",
+    "components/ResourceCard/README.md",
+    "components/ResourceCard/style.css",
+    "components/ResourceLibrary/README.md",
+    "components/ResourceLibrary/style.css",
+    "components/ResourceLink/README.md",
+    "components/ResourceLink/style.css",
+    "components/RichText/README.md",
+    "components/RichText/style.css",
+    "components/SiteFooter/README.md",
+    "components/SiteFooter/style.css",
+    "components/SiteHeader/README.md",
+    "components/SiteHeader/style.css",
+    "components/StatisticGrid/README.md",
+    "components/StatisticGrid/style.css",
+    "components/StepCards/README.md",
+    "components/StepCards/style.css",
+    "components/StepNav/README.md",
+    "components/StepNav/style.css",
+    "components/TextSection/README.md",
+    "components/TextSection/style.css",
+    "components/Timeline/README.md",
+    "components/Timeline/style.css",
+    "components/TreatmentEvidence/README.md",
+    "components/TreatmentEvidence/style.css",
+    "components/bundle.css",
+    "components/bundle.js",
+    "fonts/Montserrat-400-normal.woff2",
+    "fonts/Montserrat-500-italic.woff2",
+    "fonts/Montserrat-500-normal.woff2",
+    "fonts/Montserrat-600-normal.woff2",
+    "fonts/Montserrat-700-normal.woff2",
+    "fonts/Montserrat-800-normal.woff2",
+    "handoffs/2026-11-18-live-site-updates.md",
+    "handoffs/2026-11-20-fluid-layout.md",
+    "handoffs/2026-11-20-interior-pages-release.md",
+    "system-map.md",
+    "tokens.css"
+  ],
+  "libraries": [],
+  "components": [
+    {
+      "name": "ActionLink",
+      "group": "Actions",
+      "summary": "The underlined SemiBold text link that ends a section (\"See the Question →\", \"Simple by Design →\", \"After the Yes: Guidance and Resources →\")."
+    },
+    {
+      "name": "Button",
+      "group": "Actions",
+      "summary": "The primary campaign action (\"Just Ask\"): a blue, 8px-radius button with a SemiBold 16/24 label."
+    },
+    {
+      "name": "Callout",
+      "group": "Interior pieces",
+      "summary": "A titled tip or note marked by closed brackets on both sides ([ … ]), with no fill, so it never reads as a card."
+    },
+    {
+      "name": "CardGrid",
+      "group": "Interior sections",
+      "summary": "A grid of InfoCards under an accent rule, H2 and optional intro, with an optional closing button or closing pair."
+    },
+    {
+      "name": "ClinicalQuestion",
+      "group": "Homepage sections",
+      "summary": "The exact clinical question in a pale-blue panel with an open blue bracket, beside an eyebrow, heading, short body, and an optional ActionLink and \"Copy the Qu…"
+    },
+    {
+      "name": "ContactForm",
+      "group": "Interior sections",
+      "summary": "The Contact page: social links beside a form with validation states."
+    },
+    {
+      "name": "CtaBand",
+      "group": "Homepage sections",
+      "summary": "The closing (or mid-page) campaign band on surface-inverse: a centered cta statement with lead words in sky, an optional question in sky, an optional body line…"
+    },
+    {
+      "name": "DataBars",
+      "group": "Interior pieces",
+      "summary": "Proportional horizontal bars against a 100% track, with the value as text (The Diagnosis Gap)."
+    },
+    {
+      "name": "FeaturedResource",
+      "group": "Interior sections",
+      "summary": "One highlighted Library item in a pale-blue panel: optional format tag, title, text, button, 4:3 preview image, with a white brain pattern."
+    },
+    {
+      "name": "Hero",
+      "group": "Homepage sections",
+      "summary": "The campaign statement: \"More than / 40 million / Americans live with migraine\", the care-gap subtitle, a 100 × 3 rule and \"Led by:\" with the AHS logo, over th…"
+    },
+    {
+      "name": "HomePage",
+      "group": "Pages",
+      "summary": "The homepage (content outline 0.0 Home), assembled only from the system's components in outline order:",
+      "page": true
+    },
+    {
+      "name": "IntroMedia",
+      "group": "Homepage sections",
+      "summary": "Rich text + campaign imagery: the consultation photo beside an accent rule, H2, short body and an ActionLink."
+    },
+    {
+      "name": "ListBlock",
+      "group": "Interior pieces",
+      "summary": "List styles used inside TextSection and InfoCards: numbered, check, bullet, bullets in columns, and the list panel."
+    },
+    {
+      "name": "PageHero",
+      "group": "Interior sections",
+      "summary": "The header of every interior page: optional eyebrow, H1, intro, and one of four layouts."
+    },
+    {
+      "name": "PageNav",
+      "group": "Interior sections",
+      "summary": "End-of-page wayfinding on the step pages: a back card, the next-step card, and a \"Browse the Resource Library\" text link."
+    },
+    {
+      "name": "PartnerAttribution",
+      "group": "Homepage sections",
+      "summary": "The partner section (\"Developed with clinicians who see patients every day\"): a centered introduction (H2, body, link), then one centered row of partner logos."
+    },
+    {
+      "name": "PullQuote",
+      "group": "Interior pieces",
+      "summary": "A clinician quote with a blue quote mark and an attribution carrying its endnote."
+    },
+    {
+      "name": "QuoteBand",
+      "group": "Homepage sections",
+      "summary": "A clinician quote in a pale-blue card over the consultation photo."
+    },
+    {
+      "name": "References",
+      "group": "Site chrome",
+      "summary": "A numbered reference list for the page's endnotes: H2, a small muted note, then an ol in small with navy SemiBold numbers and a 44px hanging indent."
+    },
+    {
+      "name": "ResourceCard",
+      "group": "Cards",
+      "summary": "A card that links to a group of After the Yes resources."
+    },
+    {
+      "name": "ResourceLibrary",
+      "group": "Interior sections",
+      "summary": "The Resource Library template: three filters, a live results count, results grouped under headings, and an empty state."
+    },
+    {
+      "name": "ResourceLink",
+      "group": "Interior pieces",
+      "summary": "A row link to one Library resource: title, format label in its tag color, arrow in a 32px blue circle; the whole row is the link."
+    },
+    {
+      "name": "RichText",
+      "group": "Interior sections",
+      "summary": "Long-form copy for the legal pages and any WYSIWYG field, at the 720 measure."
+    },
+    {
+      "name": "SiteFooter",
+      "group": "Site chrome",
+      "summary": "The campaign footer on surface-soft: logo, utility links, copyright and legal links."
+    },
+    {
+      "name": "SiteHeader",
+      "group": "Site chrome",
+      "summary": "The campaign header: the Just Ask. logo on the left and the primary navigation on the right."
+    },
+    {
+      "name": "StatisticGrid",
+      "group": "Homepage sections",
+      "summary": "A section of statistic cards: value (statistic, blue, -1px tracking), a 40 × 3 blue rule, description and endnote."
+    },
+    {
+      "name": "StepCards",
+      "group": "Interior sections",
+      "summary": "Three numbered, linked cards for the After the Yes sequence."
+    },
+    {
+      "name": "StepNav",
+      "group": "Interior sections",
+      "summary": "A three-step stepper placed right after the PageHero on the step pages: numbered circles joined by a 2px sky line; the current step is filled blue."
+    },
+    {
+      "name": "TextSection",
+      "group": "Interior sections",
+      "summary": "The block for prose sections: accent rule, H2, copy, and options for lists, quotes, asides, resource links and cards."
+    },
+    {
+      "name": "Timeline",
+      "group": "Interior sections",
+      "summary": "Ordered checkpoints as cards with a blue chevron to the next one (When to Check In)."
+    },
+    {
+      "name": "TreatmentEvidence",
+      "group": "Homepage sections",
+      "summary": "A text-and-statistic band on surface-soft: H2, body and ActionLink beside one evidence statistic inside a pair of brackets."
+    }
+  ],
+  "assetGroups": [
+    {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "just-ask-full-color.svg",
+        "just-ask-white.svg",
+        "just-ask-navy.svg",
+        "just-ask-blue.svg",
+        "just-ask-black.svg",
+        "ahs-horizontal-2-color.svg"
+      ],
+      "files": [
+        {
+          "path": "assets/Logos/just-ask-full-color.svg",
+          "id": "7adbe384f47124e2b328332f6e3cd343"
+        },
+        {
+          "path": "assets/Logos/just-ask-white.svg",
+          "id": "b309a8eb2b6b4f63ffb74d7dab23f2eb"
+        },
+        {
+          "path": "assets/Logos/just-ask-navy.svg",
+          "id": "80df3259f350f057fec3eb769a321025"
+        },
+        {
+          "path": "assets/Logos/just-ask-blue.svg",
+          "id": "cf5ee794ee1a141065a2a5b0b6e9d162"
+        },
+        {
+          "path": "assets/Logos/just-ask-black.svg",
+          "id": "c93d92769986f643892b9a6fd4a3b932"
+        },
+        {
+          "path": "assets/Logos/ahs-horizontal-2-color.svg",
+          "id": "6acd4bf7f954ae772476ccaf84f25d7d"
+        }
+      ]
+    },
+    {
+      "name": "Photography",
+      "tile": "l",
+      "order": [
+        "consultation-clinician-patient.webp"
+      ],
+      "files": [
+        {
+          "path": "assets/Photography/consultation-clinician-patient.webp",
+          "id": "ca18fa43489a86c904bb8fb15c49b9a4"
+        }
+      ]
+    },
+    {
+      "name": "Hero",
+      "tile": "l",
+      "order": [
+        "hero-face-grid.webp"
+      ],
+      "files": [
+        {
+          "path": "assets/Hero/hero-face-grid.webp",
+          "id": "1b89f70bb9462e66d949bdf9def00e74"
+        }
+      ]
+    },
+    {
+      "name": "Portraits",
+      "tile": "s",
+      "order": [
+        "portrait-01-silhouette.webp",
+        "portrait-01.webp",
+        "portrait-02-silhouette.webp",
+        "portrait-02.webp",
+        "portrait-03-silhouette.webp",
+        "portrait-03.webp",
+        "portrait-04-silhouette.webp",
+        "portrait-04.webp",
+        "portrait-05-silhouette.webp",
+        "portrait-05.webp",
+        "portrait-06-silhouette.webp",
+        "portrait-06.webp",
+        "portrait-07-silhouette.webp",
+        "portrait-07.webp",
+        "portrait-08-silhouette.webp",
+        "portrait-08.webp",
+        "portrait-09-silhouette.webp",
+        "portrait-09.webp",
+        "portrait-10-silhouette.webp",
+        "portrait-10.webp",
+        "portrait-11-silhouette.webp",
+        "portrait-11.webp",
+        "portrait-12-silhouette.webp",
+        "portrait-12.webp",
+        "portrait-13-silhouette.webp",
+        "portrait-13.webp",
+        "portrait-14-silhouette.webp",
+        "portrait-14.webp",
+        "portrait-15-silhouette.webp",
+        "portrait-15.webp",
+        "portrait-16-silhouette.webp",
+        "portrait-16.webp"
+      ],
+      "files": [
+        {
+          "path": "assets/Portraits/portrait-01-silhouette.webp",
+          "id": "07e2aa615b86d4d38a039a45949f6591"
+        },
+        {
+          "path": "assets/Portraits/portrait-01.webp",
+          "id": "3cacaee304557735a1b3aee85b6bbfd6"
+        },
+        {
+          "path": "assets/Portraits/portrait-02-silhouette.webp",
+          "id": "85c4885d4ee92a957cfe94c492eb5719"
+        },
+        {
+          "path": "assets/Portraits/portrait-02.webp",
+          "id": "0d9dd63577ae2570c04b2cd932165aca"
+        },
+        {
+          "path": "assets/Portraits/portrait-03-silhouette.webp",
+          "id": "c6daf173e77463f18c24383b73751a94"
+        },
+        {
+          "path": "assets/Portraits/portrait-03.webp",
+          "id": "a2a746e316f9ef37bb316a6d55e6b2e2"
+        },
+        {
+          "path": "assets/Portraits/portrait-04-silhouette.webp",
+          "id": "e11adf927c98748f94764c57912f2cad"
+        },
+        {
+          "path": "assets/Portraits/portrait-04.webp",
+          "id": "d19c25c4f2dae1fd6e310fcd4d178f96"
+        },
+        {
+          "path": "assets/Portraits/portrait-05-silhouette.webp",
+          "id": "fbdf8e3793b3038702c68f45d3cd83e8"
+        },
+        {
+          "path": "assets/Portraits/portrait-05.webp",
+          "id": "14ed5d510facb75de283c4353931c610"
+        },
+        {
+          "path": "assets/Portraits/portrait-06-silhouette.webp",
+          "id": "10b8643fe8b138292a4e5a0f46be8b66"
+        },
+        {
+          "path": "assets/Portraits/portrait-06.webp",
+          "id": "25a7ea91fdd0d138701db4d5fb2e8f8d"
+        },
+        {
+          "path": "assets/Portraits/portrait-07-silhouette.webp",
+          "id": "af404ddcbeb0e03f08bf34371fc56fad"
+        },
+        {
+          "path": "assets/Portraits/portrait-07.webp",
+          "id": "38d68fc330914a07b595bf85b976c28b"
+        },
+        {
+          "path": "assets/Portraits/portrait-08-silhouette.webp",
+          "id": "c49faf869f9543a92f67f1d653471d27"
+        },
+        {
+          "path": "assets/Portraits/portrait-08.webp",
+          "id": "4a1f84132b216e8482391bbe95c1446e"
+        },
+        {
+          "path": "assets/Portraits/portrait-09-silhouette.webp",
+          "id": "df463f1f2edb40ede55845c931793688"
+        },
+        {
+          "path": "assets/Portraits/portrait-09.webp",
+          "id": "cbcf86c0863afddd29aaa193c6c13205"
+        },
+        {
+          "path": "assets/Portraits/portrait-10-silhouette.webp",
+          "id": "6d3acc90e509d91f95c2485f80d5fc08"
+        },
+        {
+          "path": "assets/Portraits/portrait-10.webp",
+          "id": "740f45c34646a363245d8e9c2d6a3459"
+        },
+        {
+          "path": "assets/Portraits/portrait-11-silhouette.webp",
+          "id": "0401fe70748a4d82ec223a8d82afb65d"
+        },
+        {
+          "path": "assets/Portraits/portrait-11.webp",
+          "id": "43eda3f3f69597ae965a8b90374d18dc"
+        },
+        {
+          "path": "assets/Portraits/portrait-12-silhouette.webp",
+          "id": "aa4117b3ece0053754c89fff1780b08d"
+        },
+        {
+          "path": "assets/Portraits/portrait-12.webp",
+          "id": "34a1b4b59593143c3e4132f8e55d5f34"
+        },
+        {
+          "path": "assets/Portraits/portrait-13-silhouette.webp",
+          "id": "0d3af4f049f5f878f02a8abd0d115c25"
+        },
+        {
+          "path": "assets/Portraits/portrait-13.webp",
+          "id": "e476aaa6d6a7e076049aac362c49f4c1"
+        },
+        {
+          "path": "assets/Portraits/portrait-14-silhouette.webp",
+          "id": "11efeef1fbc59a910c8ac5fc14572383"
+        },
+        {
+          "path": "assets/Portraits/portrait-14.webp",
+          "id": "a90bca19b354d2c46d477b7307779210"
+        },
+        {
+          "path": "assets/Portraits/portrait-15-silhouette.webp",
+          "id": "c0a2741030e25d59ad54bbcc0c59c8c9"
+        },
+        {
+          "path": "assets/Portraits/portrait-15.webp",
+          "id": "672b0079ff11b72ac9365dbe51ffac70"
+        },
+        {
+          "path": "assets/Portraits/portrait-16-silhouette.webp",
+          "id": "9476c8a66a6df24a573bfa94a1b85e8a"
+        },
+        {
+          "path": "assets/Portraits/portrait-16.webp",
+          "id": "0fd844be36dcb3ed6766888d0541d43b"
+        }
+      ]
+    },
+    {
+      "name": "Patterns",
+      "order": [
+        "brain-illustration-top.svg",
+        "topographic-brain-01.svg",
+        "topographic-brain-02.svg"
+      ],
+      "files": [
+        {
+          "path": "assets/Patterns/brain-illustration-top.svg",
+          "id": "06096fbc835bb04738472ba836d056b8"
+        },
+        {
+          "path": "assets/Patterns/topographic-brain-01.svg",
+          "id": "d4567513dfc5c7b6fc75af24c1fb24e6"
+        },
+        {
+          "path": "assets/Patterns/topographic-brain-02.svg",
+          "id": "90ecf4cc977fd395bacdc8de4088b555"
+        }
+      ]
+    }
+  ],
+  "storage": {
+    "files": {
+      "assets/Hero/hero-face-grid.webp": {
+        "store": "blob",
+        "id": "1b89f70bb9462e66d949bdf9def00e74",
+        "bytes": 184998,
+        "type": "image/webp"
+      },
+      "assets/Logos/ahs-horizontal-2-color.svg": {
+        "store": "blob",
+        "id": "6acd4bf7f954ae772476ccaf84f25d7d",
+        "bytes": 9020,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/just-ask-black.svg": {
+        "store": "blob",
+        "id": "c93d92769986f643892b9a6fd4a3b932",
+        "bytes": 5872,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/just-ask-blue.svg": {
+        "store": "blob",
+        "id": "cf5ee794ee1a141065a2a5b0b6e9d162",
+        "bytes": 6037,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/just-ask-full-color.svg": {
+        "store": "blob",
+        "id": "7adbe384f47124e2b328332f6e3cd343",
+        "bytes": 6037,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/just-ask-navy.svg": {
+        "store": "blob",
+        "id": "80df3259f350f057fec3eb769a321025",
+        "bytes": 6037,
+        "type": "image/svg+xml"
+      },
+      "assets/Logos/just-ask-white.svg": {
+        "store": "blob",
+        "id": "b309a8eb2b6b4f63ffb74d7dab23f2eb",
+        "bytes": 6024,
+        "type": "image/svg+xml"
+      },
+      "assets/Patterns/brain-illustration-top.svg": {
+        "store": "blob",
+        "id": "06096fbc835bb04738472ba836d056b8",
+        "bytes": 52150,
+        "type": "image/svg+xml"
+      },
+      "assets/Patterns/topographic-brain-01.svg": {
+        "store": "blob",
+        "id": "d4567513dfc5c7b6fc75af24c1fb24e6",
+        "bytes": 164535,
+        "type": "image/svg+xml"
+      },
+      "assets/Patterns/topographic-brain-02.svg": {
+        "store": "blob",
+        "id": "90ecf4cc977fd395bacdc8de4088b555",
+        "bytes": 239617,
+        "type": "image/svg+xml"
+      },
+      "assets/Photography/consultation-clinician-patient.webp": {
+        "store": "blob",
+        "id": "ca18fa43489a86c904bb8fb15c49b9a4",
+        "bytes": 53328,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-01-silhouette.webp": {
+        "store": "blob",
+        "id": "07e2aa615b86d4d38a039a45949f6591",
+        "bytes": 3986,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-01.webp": {
+        "store": "blob",
+        "id": "3cacaee304557735a1b3aee85b6bbfd6",
+        "bytes": 6464,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-02-silhouette.webp": {
+        "store": "blob",
+        "id": "85c4885d4ee92a957cfe94c492eb5719",
+        "bytes": 4590,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-02.webp": {
+        "store": "blob",
+        "id": "0d9dd63577ae2570c04b2cd932165aca",
+        "bytes": 7312,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-03-silhouette.webp": {
+        "store": "blob",
+        "id": "c6daf173e77463f18c24383b73751a94",
+        "bytes": 4174,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-03.webp": {
+        "store": "blob",
+        "id": "a2a746e316f9ef37bb316a6d55e6b2e2",
+        "bytes": 6956,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-04-silhouette.webp": {
+        "store": "blob",
+        "id": "e11adf927c98748f94764c57912f2cad",
+        "bytes": 5324,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-04.webp": {
+        "store": "blob",
+        "id": "d19c25c4f2dae1fd6e310fcd4d178f96",
+        "bytes": 8520,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-05-silhouette.webp": {
+        "store": "blob",
+        "id": "fbdf8e3793b3038702c68f45d3cd83e8",
+        "bytes": 4440,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-05.webp": {
+        "store": "blob",
+        "id": "14ed5d510facb75de283c4353931c610",
+        "bytes": 6948,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-06-silhouette.webp": {
+        "store": "blob",
+        "id": "10b8643fe8b138292a4e5a0f46be8b66",
+        "bytes": 4538,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-06.webp": {
+        "store": "blob",
+        "id": "25a7ea91fdd0d138701db4d5fb2e8f8d",
+        "bytes": 7750,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-07-silhouette.webp": {
+        "store": "blob",
+        "id": "af404ddcbeb0e03f08bf34371fc56fad",
+        "bytes": 4202,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-07.webp": {
+        "store": "blob",
+        "id": "38d68fc330914a07b595bf85b976c28b",
+        "bytes": 6468,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-08-silhouette.webp": {
+        "store": "blob",
+        "id": "c49faf869f9543a92f67f1d653471d27",
+        "bytes": 4772,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-08.webp": {
+        "store": "blob",
+        "id": "4a1f84132b216e8482391bbe95c1446e",
+        "bytes": 9864,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-09-silhouette.webp": {
+        "store": "blob",
+        "id": "df463f1f2edb40ede55845c931793688",
+        "bytes": 4218,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-09.webp": {
+        "store": "blob",
+        "id": "cbcf86c0863afddd29aaa193c6c13205",
+        "bytes": 6798,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-10-silhouette.webp": {
+        "store": "blob",
+        "id": "6d3acc90e509d91f95c2485f80d5fc08",
+        "bytes": 4012,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-10.webp": {
+        "store": "blob",
+        "id": "740f45c34646a363245d8e9c2d6a3459",
+        "bytes": 7848,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-11-silhouette.webp": {
+        "store": "blob",
+        "id": "0401fe70748a4d82ec223a8d82afb65d",
+        "bytes": 4022,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-11.webp": {
+        "store": "blob",
+        "id": "43eda3f3f69597ae965a8b90374d18dc",
+        "bytes": 9348,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-12-silhouette.webp": {
+        "store": "blob",
+        "id": "aa4117b3ece0053754c89fff1780b08d",
+        "bytes": 3880,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-12.webp": {
+        "store": "blob",
+        "id": "34a1b4b59593143c3e4132f8e55d5f34",
+        "bytes": 6514,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-13-silhouette.webp": {
+        "store": "blob",
+        "id": "0d3af4f049f5f878f02a8abd0d115c25",
+        "bytes": 4504,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-13.webp": {
+        "store": "blob",
+        "id": "e476aaa6d6a7e076049aac362c49f4c1",
+        "bytes": 6580,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-14-silhouette.webp": {
+        "store": "blob",
+        "id": "11efeef1fbc59a910c8ac5fc14572383",
+        "bytes": 5718,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-14.webp": {
+        "store": "blob",
+        "id": "a90bca19b354d2c46d477b7307779210",
+        "bytes": 9558,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-15-silhouette.webp": {
+        "store": "blob",
+        "id": "c0a2741030e25d59ad54bbcc0c59c8c9",
+        "bytes": 4856,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-15.webp": {
+        "store": "blob",
+        "id": "672b0079ff11b72ac9365dbe51ffac70",
+        "bytes": 7704,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-16-silhouette.webp": {
+        "store": "blob",
+        "id": "9476c8a66a6df24a573bfa94a1b85e8a",
+        "bytes": 4772,
+        "type": "image/webp"
+      },
+      "assets/Portraits/portrait-16.webp": {
+        "store": "blob",
+        "id": "0fd844be36dcb3ed6766888d0541d43b",
+        "bytes": 11318,
+        "type": "image/webp"
+      }
+    },
+    "blobBytesUsed": 931613
+  }
+}

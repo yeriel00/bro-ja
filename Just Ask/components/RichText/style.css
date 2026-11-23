@@ -1,0 +1,16 @@
+/* Just Ask. — RichText styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   RichText — long-form copy (legal pages, any WYSIWYG field)
+   ===================================================================== */
+.ja-rich { max-width: var(--ja-prose); }
+.ja-rich > * + * { margin-top: var(--space-16); }
+.ja-rich h2 { margin-top: var(--space-48); font-weight: 800; font-size: var(--h3-size-desktop); line-height: var(--h3-lh-desktop); }
+.ja-rich h3 { margin-top: var(--space-32); font-weight: 700; font-size: 20px; line-height: 30px; }
+.ja-rich h2 + *, .ja-rich h3 + * { margin-top: var(--space-12); }
+.ja-rich > :first-child { margin-top: 0; }
+.ja-rich ol, .ja-rich ul { padding-left: var(--space-24); }
+.ja-rich li + li { margin-top: var(--space-8); }
+.ja-rich ol ol { list-style: lower-alpha; margin-top: var(--space-8); }
+.ja-rich a { color: var(--text-link); text-underline-offset: 3px; transition: color var(--ja-duration-hover) var(--ja-ease); }
+.ja-rich a:hover { color: var(--text-link-hover); }
+.ja-rich__updated { color: var(--text-muted); font-size: 14px; line-height: 22px; }

@@ -1,0 +1,33 @@
+/* Just Ask. — IntroMedia styles. Needs foundations (tokens.css + components/bundle.css) and components/ActionLink/style.css. */
+/* ---------- 04 + 05 Campaign imagery + rich text intro ---------- */
+/* Fluid (Nov 20): the block responds to its own width (container query on the section), not the viewport.
+   Narrow: text first, photo below. From a 56rem (896px) wide section: photo | text, 608 : 592.
+   Photo height scales with the section: 220 at 375, ~320 at 768, 410 max. */
+.ja-intro { container: ja-intro / inline-size; }
+.ja-intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* minmax(0, …): the photo can't push the column wider than the page */
+  row-gap: 32px;
+  column-gap: clamp(40px, 5.5556cqi, 80px);  /* 80 at a 1440-wide section */
+}
+.ja-intro__media { order: 2; }
+.ja-intro__media img {
+  display: block; width: 100%;
+  height: clamp(220px, 124.6px + 25.45cqi, 410px);
+  object-fit: cover; object-position: center;
+  border-radius: var(--radius-media);
+}
+/* Text column: rule? → eyebrow? → H2/H1 → body? → link?, 24 apart.
+   A gap, not margins, so any part can be left out without leaving space behind. */
+.ja-intro__text {
+  order: 1; align-self: center;
+  display: flex; flex-direction: column; gap: 24px;
+}
+.ja-intro__text > :is(.ja-rule, .ja-eyebrow, .ja-h1, .ja-h2, .ja-prose, .ja-link) { margin: 0; }
+.ja-intro__text > .ja-link { align-self: flex-start; }   /* focus ring hugs the link */
+/* The one switch: side by side needs ~360px per column; below that the split would squeeze the text. */
+@container ja-intro (min-width: 56rem) {
+  .ja-intro__grid { grid-template-columns: minmax(0, 608fr) minmax(0, 592fr); align-items: center; }
+  .ja-intro__media { order: 1; }
+  .ja-intro__text { order: 2; }
+}

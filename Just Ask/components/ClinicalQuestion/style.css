@@ -1,0 +1,87 @@
+/* Just Ask. — ClinicalQuestion styles. Needs foundations (tokens.css + components/bundle.css) and components/ActionLink/style.css. */
+/* ---------- 03 Clinical question ---------- */
+/* Fluid (Nov 20): panel padding and bracket inset scale with the page; the intro | panel split is a container query
+   on the section (`ja-question`, 64rem): the intro column needs ~280px for the heading. No media queries. */
+.ja-question { container: ja-question / inline-size; }
+.ja-question__grid { --ja-bracket-inset: clamp(20px, 15.423px + 1.2207vw, 33px); display: grid; grid-template-areas: "intro" "panel" "after"; row-gap: 32px; }
+.ja-question__intro { grid-area: intro; }
+.ja-question__panel { grid-area: panel; }
+.ja-question__after { grid-area: after; }
+.ja-eyebrow { margin: 0; }
+.ja-question__intro .ja-eyebrow + :is(.ja-h1, .ja-h2) { margin-top: 23px; }
+.ja-question__panel {
+  margin: 0;
+  padding: clamp(24px, 12.732px + 3.0047vw, 56px) clamp(12px, 3.3803vw - 0.676px, 48px);
+  border: var(--stroke-border) solid var(--border-subtle);
+  border-radius: var(--radius-media);
+  background: var(--surface-soft);
+}
+.ja-question__bracket { position: relative; margin: 0; padding-left: var(--ja-bracket-inset); color: var(--text-default); }
+.ja-question__bracket::before {          /* open bracket: 3px bar, 16px arms */
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0; width: 16px;
+  border: var(--stroke-thin-accent) solid var(--graphic-accent);
+  border-right: 0;
+}
+/* Body and link stack with one gap: 32 below desktop, 24 on desktop. */
+.ja-question__after { display: flex; flex-direction: column; align-items: flex-start; row-gap: 32px; }
+.ja-question__after .ja-prose { margin: 0; align-self: stretch; }
+/* Copy action (optional): a quiet text button inside the panel, under the question and lined up with its text,
+   so the question stays the focus (Nov 19, from the interior-page canvas; replaces the filled primary Button).
+   Navy on pale blue 12.27:1, underlined, 48px tall target. -12 bottom margin keeps the panel padding visually even.
+   Hidden until bundle.js confirms the browser can copy. */
+.ja-question__actions { margin-top: 12px; margin-bottom: -12px; padding-left: var(--ja-bracket-inset); }
+.ja-question__copy {
+  display: inline-flex; align-items: center; min-height: var(--control-min-height);
+  padding: 0; border: 0; background: none; cursor: pointer;
+  color: var(--text-link-on-soft); font: 600 16px/24px var(--font-sans);
+  text-decoration: underline; text-underline-offset: 3px;
+  transition: color var(--ja-duration-hover) var(--ja-ease);
+}
+.ja-question__copy:hover { color: var(--text-muted); }
+.ja-question__copy:focus { outline: none; }
+.ja-question__copy:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-question__copy[hidden] { display: none; }
+@container ja-question (min-width: 64rem) {
+  .ja-question__grid {
+    grid-template-columns: minmax(0, 400fr) minmax(0, 832fr);
+    grid-template-areas: "intro panel" "after panel";
+    column-gap: 48px; row-gap: 24px;
+  }
+  .ja-question__intro { align-self: end; }
+  .ja-question__after { align-self: start; row-gap: 24px; }
+  /* No body or link: the intro sits centered beside the panel. */
+  .ja-question__grid:not(:has(.ja-question__after)) .ja-question__intro { grid-row: 1 / span 2; align-self: center; }
+  .ja-question__panel { align-self: center; }
+}
+
+/* ---------- Optional supporting stat + top alignment (Nov 20, from The Movement; off by default, homepage unchanged). Needs StatisticGrid styles for the stat card. ---------- */
+/* ClinicalQuestion, top-aligned (Nov 19, The Movement): on desktop the question panel starts flush with the
+   section's accent rule (both columns share one top edge) instead of being centered on the column. Large filled panels
+   align to the rule; text-only asides (TextSection) still align to the H2. */
+@container ja-question (min-width: 64rem) {
+  .ja-question--top .ja-question__intro { align-self: start; }
+  .ja-question--top .ja-question__panel { grid-row: 1 / span 2; align-self: start; margin-top: 0; }
+}
+
+/* =====================================================================
+   ClinicalQuestion — supporting stat (Nov 19). Optional ACF fields: show_stat (off by default),
+   stat_value, stat_label, stat_endnote. Stat on: add ja-question--top to the section, wrap the panel and a
+   ja-stat--wide card in .ja-question__side. Stat off: the homepage ClinicalQuestion, unchanged.
+   Needs StatisticGrid styles for the stat card.
+   ===================================================================== */
+.ja-question__side { grid-area: panel; display: grid; gap: var(--space-24); align-content: start; }
+.ja-question__side > .ja-question__panel { grid-area: auto; }
+/* When the panel sits next to a stat card, it takes the card's 8px corners (radius-md) so the two boxes match.
+   On its own (homepage) the panel keeps radius-media (20). */
+.ja-question__side > .ja-question__panel { border-radius: var(--radius-md); }
+@container ja-question (min-width: 64rem) {
+  .ja-question--top .ja-question__grid { grid-template-rows: auto 1fr; }   /* row 1 hugs the heading; body follows 24 below */
+  .ja-question--top .ja-question__side { grid-row: 1 / span 2; align-self: start; margin-top: 0; }
+}
+/* Stat below the panel, wide: big value left, rule + label right */
+.ja-stat--wide { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "v r" "v l"; column-gap: var(--space-32); align-items: center; min-height: 0; }
+.ja-stat--wide .ja-stat__value { grid-area: v; }
+.ja-stat--wide .ja-stat__rule { grid-area: r; margin: 0 0 var(--space-12); align-self: end; }
+.ja-stat--wide .ja-stat__label { grid-area: l; align-self: start; }
+@container ja-question (max-width: 47.99rem) { .ja-stat--wide { grid-template-columns: minmax(0, 1fr); grid-template-areas: "v" "r" "l"; } .ja-stat--wide .ja-stat__rule { margin: var(--space-16) 0; } }

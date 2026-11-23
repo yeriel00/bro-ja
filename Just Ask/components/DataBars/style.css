@@ -1,0 +1,11 @@
+/* Just Ask. — DataBars styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   DataBars — proportional horizontal bars (e.g. the diagnosis gap)
+   ===================================================================== */
+.ja-bars { display: grid; gap: var(--space-24); margin: var(--space-40) 0 0; padding: 0; list-style: none; }
+.ja-bar__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-16); }
+.ja-bar__label { font-weight: 600; }
+.ja-bar__value { flex: none; color: var(--blue); font-weight: 700; letter-spacing: var(--tracking-display); font-size: var(--ja-question-size); line-height: var(--ja-question-lh); }
+.ja-bar__track { height: clamp(20px, 16.183px + 1.0178vw, 24px); margin-top: var(--space-8); border-radius: var(--radius-sm); background: var(--surface-soft); overflow: hidden; }
+.ja-bar__fill { display: block; height: 100%; background: var(--graphic-accent); border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.ja-bars-caption { margin-top: var(--space-16); color: var(--text-muted); }

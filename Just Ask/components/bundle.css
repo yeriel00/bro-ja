@@ -1,0 +1,202 @@
+/* Just Ask. — FOUNDATIONS stylesheet (loaded on every page and preview).
+   Holds: fluid variables (clamp), base, fluid type classes, endnote + arrow, shared pieces (rule, highlight, prose, pattern).
+   Each component's own CSS lives in components/<Component>/style.css — see system-map.md.
+   Original note: Every value comes from tokens.css (var(--…)).
+   Plain HTML/CSS classes (prefix ja-) so each component maps 1:1 to a WordPress/ACF block.
+   FLUID (Nov 20, 2026): type, gutters and section padding scale continuously from 375 to 1440 with clamp(),
+   using the mobile and desktop tokens as the min / max guardrails. Tablet tokens are a check, not a target.
+   No breakpoint-driven layout here. Components add a media query only where something breaks (see README). */
+
+:root {
+  --ja-duration-hover: 250ms;          /* hover/press transitions (Jerry's standard) */
+  --ja-duration-fade: 800ms;           /* hero: face → silhouette (silhouette fades in) */
+  --ja-duration-silhouette-out: 1600ms; /* hero: silhouette → face (silhouette fades out, slower) */
+  --ja-grid-interval: 2000;            /* ms between hero face-grid swaps (read by bundle.js) */
+  --ja-ease: ease;
+
+  /* ---------- Fluid values (375 → 1440) ----------
+     clamp(min, intercept + slope·vw, max): min = the *-mobile token at 375px, max = the *-desktop token at 1440px,
+     straight line between. Values stop growing above 1440. Type is in rem so it follows the reader's font-size setting
+     (1rem = 16px by default, so the numbers match the px tokens). To regenerate: slope = (max − min) / 1065,
+     intercept = min − slope × 375. Static styles (body, small, label, link, endnote) don't change by width. */
+  --ja-fluid-min: 375px;   /* fluid-min-width */
+  --ja-fluid-max: 1440px;  /* fluid-max-width */
+
+  /* layout */
+  --ja-margin: clamp(24px, 4.2817px + 5.2582vw, 80px);
+  --ja-gap: clamp(16px, 13.1831px + 0.7512vw, 24px);
+  --ja-section: clamp(48px, 36.7324px + 3.0047vw, 80px);   /* Nov 20: section-padding-mobile 24 → 48 (sections ran into each other on phones); still 80 at 1440 */
+  --ja-content: var(--content-width-desktop);   /* content column max; the container is 100% below it */
+  --ja-prose: var(--prose-max-desktop);         /* readable measure; narrower containers cap it naturally */
+
+  /* type (size / line height) */
+  --ja-display-size: clamp(3rem, 1.9437rem + 4.5070vw, 6rem);
+  --ja-display-lh: clamp(3.25rem, 2.1937rem + 4.5070vw, 6.25rem);
+  --ja-h1-size: clamp(2.25rem, 1.6338rem + 2.6291vw, 4rem);
+  --ja-h1-lh: clamp(2.75rem, 2.1338rem + 2.6291vw, 4.5rem);
+  --ja-h2-size: clamp(1.75rem, 1.4859rem + 1.1268vw, 2.5rem);
+  --ja-h2-lh: clamp(2.25rem, 1.9859rem + 1.1268vw, 3rem);
+  --ja-h3-size: clamp(1.375rem, 1.2870rem + 0.3756vw, 1.625rem);
+  --ja-h3-lh: clamp(1.875rem, 1.7870rem + 0.3756vw, 2.125rem);
+  --ja-question-size: clamp(1.5rem, 1.3239rem + 0.7512vw, 2rem);
+  --ja-question-lh: clamp(2.125rem, 1.9049rem + 0.9390vw, 2.75rem);
+  --ja-statement-size: clamp(1.75rem, 1.3979rem + 1.5023vw, 2.75rem);
+  --ja-statement-lh: clamp(2.375rem, 1.9789rem + 1.6901vw, 3.5rem);
+  --ja-evidence-qualifier-size: clamp(1.125rem, 1.0370rem + 0.3756vw, 1.375rem);
+  --ja-evidence-qualifier-lh: clamp(1.75rem, 1.6620rem + 0.3756vw, 2rem);
+  --ja-statistic-size: clamp(3rem, 2.2958rem + 3.0047vw, 5rem);
+  --ja-statistic-lh: clamp(3.5rem, 2.6197rem + 3.7559vw, 6rem);
+  --ja-quotation-size: clamp(1.5rem, 1.2799rem + 0.9390vw, 2.125rem);
+  --ja-quotation-lh: clamp(2.125rem, 1.9049rem + 0.9390vw, 2.75rem);
+  --ja-cta-size: clamp(2rem, 1.4718rem + 2.2535vw, 3.5rem);
+  --ja-cta-lh: clamp(2.625rem, 2.0528rem + 2.4413vw, 4.25rem);
+  --ja-hero-lead-in-size: clamp(1.5rem, 1.2359rem + 1.1268vw, 2.25rem);
+  --ja-hero-lead-in-lh: clamp(2rem, 1.7359rem + 1.1268vw, 2.75rem);
+  --ja-hero-highlight-size: clamp(3.625rem, 2.7007rem + 3.9437vw, 6.25rem);
+  --ja-hero-highlight-lh: clamp(4.25rem, 3.2817rem + 4.1315vw, 7rem);
+  --ja-hero-continuation-size: clamp(1.875rem, 1.5669rem + 1.3146vw, 2.75rem);
+  --ja-hero-continuation-lh: clamp(2.5rem, 2.1479rem + 1.5023vw, 3.5rem);
+  --ja-hero-subtitle-size: clamp(1.125rem, 1.0810rem + 0.1878vw, 1.25rem);
+  --ja-hero-subtitle-lh: clamp(1.75rem, 1.6620rem + 0.3756vw, 2rem);
+}
+
+/* ---------- Base ---------- */
+.ja-root, .ja-root * { box-sizing: border-box; }
+.ja-root {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-default);
+  font-family: var(--font-sans);
+  font-size: var(--body-size-desktop);
+  line-height: var(--body-lh-desktop);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.ja-container {
+  width: 100%;
+  max-width: calc(var(--ja-content) + 2 * var(--ja-margin));
+  margin-inline: auto;
+  padding-inline: var(--ja-margin);
+}
+.ja-section { padding-block: var(--ja-section); }
+.ja-visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Fluid type (one class per style; sizes scale with the viewport, no breakpoints) ---------- */
+.ja-display, .ja-h1, .ja-h2, .ja-h3, .ja-question, .ja-statement, .ja-body, .ja-small,
+.ja-label, .ja-evidence-qualifier, .ja-statistic, .ja-quotation, .ja-cta-text,
+.ja-hero-lead-in, .ja-hero-highlight, .ja-hero-continuation, .ja-hero-subtitle {
+  font-family: var(--font-sans);
+  margin: 0;
+}
+.ja-display { font-weight: 700; letter-spacing: var(--tracking-display); font-size: var(--ja-display-size); line-height: var(--ja-display-lh); }
+.ja-h1 { font-weight: 800; font-size: var(--ja-h1-size); line-height: var(--ja-h1-lh); }
+.ja-h2 { font-weight: 800; font-size: var(--ja-h2-size); line-height: var(--ja-h2-lh); }
+.ja-h3 { font-weight: 800; font-size: var(--ja-h3-size); line-height: var(--ja-h3-lh); }
+.ja-question { font-weight: 700; font-size: var(--ja-question-size); line-height: var(--ja-question-lh); }
+.ja-statement { font-weight: 800; font-size: var(--ja-statement-size); line-height: var(--ja-statement-lh); }
+.ja-body { font-weight: 400; font-size: var(--body-size-desktop); line-height: var(--body-lh-desktop); }
+.ja-small { font-weight: 400; font-size: var(--small-size-desktop); line-height: var(--small-lh-desktop); }
+.ja-label { font-weight: 600; font-size: var(--label-size-desktop); line-height: var(--label-lh-desktop); }
+.ja-evidence-qualifier { font-weight: 700; font-size: var(--ja-evidence-qualifier-size); line-height: var(--ja-evidence-qualifier-lh); }
+.ja-statistic { font-weight: 700; letter-spacing: var(--tracking-display); font-size: var(--ja-statistic-size); line-height: var(--ja-statistic-lh); }
+.ja-quotation { font-weight: 800; font-size: var(--ja-quotation-size); line-height: var(--ja-quotation-lh); }
+.ja-cta-text { font-weight: 800; font-size: var(--ja-cta-size); line-height: var(--ja-cta-lh); }
+.ja-hero-lead-in { font-weight: 800; font-size: var(--ja-hero-lead-in-size); line-height: var(--ja-hero-lead-in-lh); }
+.ja-hero-highlight { font-weight: 800; font-size: var(--ja-hero-highlight-size); line-height: var(--ja-hero-highlight-lh); }
+.ja-hero-continuation { font-weight: 800; font-size: var(--ja-hero-continuation-size); line-height: var(--ja-hero-continuation-lh); }
+.ja-hero-subtitle { font-weight: 600; font-size: var(--ja-hero-subtitle-size); line-height: var(--ja-hero-subtitle-lh); }
+
+/* Endnote / reference marker. One fixed size everywhere (endnote token, 10px Medium), raised 5px,
+   regardless of the text it follows — as in the frames, where every marker is the same small glyph. */
+.ja-sup {
+  font-size: var(--endnote-size-desktop);
+  line-height: 0;
+  font-weight: 500;
+  vertical-align: 5px;
+  letter-spacing: 0;
+  margin-left: 1px;
+}
+.ja-sup a { color: inherit; text-decoration: none; }
+.ja-sup a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 1px; }
+
+/* Arrow glyph (Montserrat has no U+2192). Geometry copied from the frames' arrow at 18px,
+   including its own underline segment so the link underline runs under the arrow as designed. */
+.ja-arrow {
+  display: inline-block;
+  width: 0.6em;
+  height: 1.2em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+}
+
+/* =====================================================================
+   SECTIONS — measured from the homepage frames (1440 / 768 / 375), which are now guideline checks.
+   Fluid between them; media queries only where a layout breaks.
+   ===================================================================== */
+
+/* ---------- Shared pieces ---------- */
+:where(.ja-root) :where(h1, h2, h3, p, figure, blockquote, ul, ol, figcaption) { margin: 0; }
+.ja-rule {                         /* accent rule above a section heading */
+  display: block;
+  width: var(--accent-rule-width);
+  height: var(--stroke-accent);
+  background: var(--graphic-accent);
+  border: 0;
+  margin: 0;
+}
+.ja-eyebrow { color: var(--blue); }
+.ja-rule + .ja-h2 { margin-top: 24px; }
+.ja-hl { color: var(--blue); }          /* highlighted words in large type */
+.ja-hl--sky { color: var(--sky); }
+.ja-prose p { margin: 0; }
+.ja-prose p + p { margin-top: var(--space-16); }
+.ja-pattern {                       /* topographic texture, recolored by mask */
+  position: absolute;
+  pointer-events: none;
+  background: var(--ja-pattern-ink, var(--graphic-quiet));
+  -webkit-mask: var(--ja-pattern-url) center / contain no-repeat;
+          mask: var(--ja-pattern-url) center / contain no-repeat;
+}
+
+/* =====================================================================
+   INTERIOR PAGES (Nov 20, from the interior-page canvas) — shared foundations for the interior blocks.
+   ===================================================================== */
+/* Container queries: every section's (and page hero's) content box is a size container named ja-content, so an interior
+   block switches layout on the width it actually has (54rem = 864px), not the viewport. */
+:is(.ja-section, .ja-page-hero) > .ja-container { container: ja-content / inline-size; }
+
+/* Tinted section (ACF "Background": white / tint) — a full-bleed ground for rhythm on long pages: a sky glow from the
+   top-right over pale blue, fading to clinical tint so the band eases into the white section below. Navy text passes on
+   every stop (lowest: navy on sky, 11.3:1). The flat pale blue is the fallback. Never two tinted sections back to back
+   unless they belong together. */
+.ja-section--tint { background: var(--surface-soft); }
+.ja-section--tint { background:
+    radial-gradient(90% 160% at 100% 0%, rgba(195, 236, 255, .85) 0%, rgba(195, 236, 255, 0) 60%),
+    linear-gradient(180deg, var(--pale-blue) 0%, var(--clinical-tint) 100%); }
+/* On the tint, pale-blue pieces flip to white, and blue links go navy (blue on pale blue is 4.01:1). */
+.ja-section--tint .ja-resource, .ja-section--tint .ja-featured, .ja-section--tint .ja-pagenav__next,
+.ja-section--tint .ja-bar__track, .ja-section--tint .ja-list-panel { background: var(--surface-page); }
+.ja-section--tint .ja-link:not(.ja-link--inverse) { color: var(--text-link-on-soft); }
+.ja-section--tint .ja-link:not(.ja-link--inverse):hover { color: var(--text-muted); }
+
+/* Same-ground spacing, INTERIOR PAGES ONLY (the page template adds .ja-interior to <main>; the homepage does not, so its
+   spacing is unchanged): two sections on the same ground share one gap instead of stacking both paddings. A ground change
+   (white ↔ tint, navy band, photo band) keeps the full padding. Feature sections (ClinicalQuestion, StatisticGrid) and the
+   logos-only partner band keep their full top padding. */
+.ja-interior .ja-section:not(.ja-section--tint):not(.ja-partners) + .ja-section:not(.ja-section--tint):not(.ja-question):not(.ja-stats),
+.ja-interior .ja-section--tint + .ja-section--tint { padding-top: 0; }
+
+/* Small 40 × thin-accent rule (stat card, callouts, InfoCard marker). */
+.ja-minirule { display: block; width: 40px; height: var(--stroke-thin-accent); background: var(--graphic-accent); }
+
+/* The last word of a link and its arrow never split across lines: <span class="ja-nowrap">word <svg class="ja-arrow">…</svg></span>. */
+.ja-nowrap { white-space: nowrap; }
+
+/* Direction arrow (13 × 24, no underline segment) used in resource rows, card footers and PageNav cards; centred on the
+   label's x-height when inline. The ActionLink arrow (with its underline segment) stays the link arrow. */
+svg.ja-arrow[viewBox="0 0 13 24"] { vertical-align: -0.3em; }

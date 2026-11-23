@@ -1,0 +1,40 @@
+/* Just Ask. — ResourceLink styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   ResourceLink — compact row link to a guide, guideline, tool, video or podcast
+   ===================================================================== */
+/* Nov 19: each link is a white row with a 1px blue edge and the arrow in a 32px blue circle. It stands out on white and
+   on pale-blue sections alike (blue edge 4.6:1 on white, 4.0:1 on pale blue, both over the 3:1 non-text minimum) and
+   never matches the sky-edged cards or the pale-blue panels. Title navy 14.15:1; format muted; arrow white on blue 4.63:1.
+   Hover: pale-blue fill + underlined title. 8 between rows. */
+.ja-reslinks { display: grid; gap: var(--space-8); margin: 0; padding: 0; list-style: none; }
+.ja-reslink { display: flex; align-items: center; gap: var(--space-16); min-height: 64px; padding: 11px var(--space-12) 11px var(--space-24);
+  border: var(--stroke-border) solid var(--graphic-accent); border-radius: var(--radius-md); background: var(--surface-page); color: var(--text-link-on-soft); text-decoration: none;
+  transition: color var(--ja-duration-hover) var(--ja-ease), background-color var(--ja-duration-hover) var(--ja-ease); }
+.ja-reslink .ja-arrow { box-sizing: content-box; width: 11px; height: 20px; padding: 6px 10px; border-radius: 50%; background: var(--graphic-accent); color: var(--text-inverse); }
+.ja-reslink__title { flex: 1 1 auto; font-weight: 600; font-size: 18px; line-height: 28px; }
+.ja-reslink__meta { flex: none; color: var(--text-muted); font-size: 14px; line-height: 22px; font-weight: 600; text-align: right; }
+.ja-reslink .ja-arrow { flex: none; }
+/* Nov 20: the format label takes its Resource Library tag color (title stays navy), tying rows to the Library tags.
+   Quick Guide uses a darker blue as text for contrast. All pass 4.5:1 on white, the card tint, pale blue and sky.
+   Non-format labels (e.g. "Resource Library" on the population cards) stay muted. */
+.ja-reslink__meta--quick-guide { color: var(--tag-quick-guide-text); }
+.ja-reslink__meta--guideline { color: var(--tag-guideline); }
+.ja-reslink__meta--tool { color: var(--tag-tool); }
+.ja-reslink__meta--article { color: var(--tag-article); }
+.ja-reslink__meta--video { color: var(--tag-video); }
+.ja-reslink__meta--podcast { color: var(--tag-podcast); }
+.ja-reslink:hover { background: var(--surface-soft); color: var(--text-link-on-soft); }
+.ja-reslink:hover .ja-reslink__title { text-decoration: underline; text-underline-offset: 3px; }
+.ja-reslink:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-reslinks--on-soft .ja-reslink { color: var(--text-link-on-soft); }
+/* Narrow container (callouts, cards, side columns, phones): the format drops under the title so it never crowds it.
+   Based on the list's own width, not the viewport, so it works wherever the list is placed. */
+.ja-reslinks { container-type: inline-size; }
+@container (max-width: 520px) {
+  .ja-reslink { flex-wrap: wrap; row-gap: 0; }
+  .ja-reslink__title { flex-basis: calc(100% - 47px); } /* Nov 19 fix: room for the 31px arrow circle + 16px gap, so the circle stays on the title's line */
+  .ja-reslink__meta { order: 3; flex-basis: 100%; text-align: left; }
+}
+
+/* On a tinted section the row hover goes sky, so it still shows against the white row on pale blue. */
+.ja-section--tint .ja-reslink:hover { background: var(--sky); }

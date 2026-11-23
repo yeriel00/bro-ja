@@ -1,0 +1,49 @@
+/* Just Ask. — StatisticGrid styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 07 Statistic item + collection ---------- */
+/* Fluid (Nov 20): no media queries. The grid is intrinsic: as many 320px-minimum columns as fit, capped at
+   --ja-stat-cols (3; 2 for two or four stats, or the `columns` field). 1 column at 375, 2 at 768, 3 at 1440. */
+.ja-stats { position: relative; overflow: hidden; padding-bottom: max(var(--ja-section), 64px); }
+.ja-stats > .ja-container { position: relative; z-index: 1; }
+.ja-stats .ja-h2 { margin-top: 24px; }
+.ja-stats__intro { margin-top: 24px; max-width: 1080px; }
+.ja-stats__grid {
+  --ja-stat-cols: 3;
+  --ja-stat-gap: clamp(12px, 7.775px + 1.1268vw, 24px);
+  container: ja-stats / inline-size;
+  display: grid; gap: var(--ja-stat-gap);
+  margin: clamp(32px, 26.366px + 1.5023vw, 48px) 0 0; padding: 0; list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 320px), calc((100% - (var(--ja-stat-cols) - 1) * var(--ja-stat-gap)) / var(--ja-stat-cols))), 1fr));
+}
+/* Columns (ACF `columns`): auto = at most 2 for 2 or 4 stats (2 × 2), 3 otherwise. Modifiers win. */
+.ja-stats__grid:where(:has(> .ja-stat:nth-child(2):last-child), :has(> .ja-stat:nth-child(4):last-child)) { --ja-stat-cols: 2; }
+.ja-stats--cols-2 .ja-stats__grid { --ja-stat-cols: 2; }
+.ja-stats--cols-3 .ja-stats__grid { --ja-stat-cols: 3; }
+.ja-stat {
+  padding: clamp(24px, 21.183px + 0.7512vw, 32px);
+  border: var(--stroke-border) solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: var(--surface-statistic);
+}
+/* Cards side by side keep an even height floor (252 → 280); a single column hugs its content. */
+@container ja-stats (min-width: 664px) { .ja-stat { min-height: clamp(252px, 220px + 4.1667vw, 280px); } }
+.ja-stat__value { display: block; color: var(--blue); }
+.ja-stat__rule { display: block; width: 40px; height: var(--stroke-thin-accent); margin: 16px 0; background: var(--graphic-accent); }
+.ja-stat__label { margin: 0; color: var(--text-default); }
+/* Optional trailing ActionLink (show_link): 36 → 52 puts the text 32 → 48 below the grid (the link box adds 4). */
+.ja-stats__link { margin-top: clamp(36px, 30.366px + 1.5023vw, 52px); }
+/* Brain pattern: grows 660 → 900 wide and drifts right with the page (35 at 375, 304 at 768, 50% + 58 from 1440). */
+.ja-stats .ja-pattern {
+  --ja-pattern-ink: var(--pale-blue); opacity: .7;
+  width: clamp(660px, 575.493px + 22.5352vw, 900px); aspect-ratio: 3 / 2; height: auto;
+  left: max(35px, min(69.77vw - 226.6px, 50% + 58px));
+  bottom: clamp(-176px, -86.761px - 6.1972vw, -110px);
+}
+
+/* ---------- Optional findings rows (Nov 20, from The Movement; off by default). Needs PullQuote (finding variant). ---------- */
+/* Findings: "What clinicians told us" — each finding paired with the quote that backs it. */
+.ja-findings { margin-top: clamp(48px, 42.366px + 1.5023vw, 64px); border-top: 1px solid var(--sky); }
+.ja-finding { display: grid; gap: var(--space-24); padding-block: var(--space-32); border-bottom: 1px solid var(--sky); }
+.ja-finding__text { margin-top: var(--space-8); }
+@container ja-content (min-width: 54rem) {
+  .ja-finding { grid-template-columns: 6fr 5fr; column-gap: var(--space-80); align-items: center; padding-block: var(--space-48); }
+}

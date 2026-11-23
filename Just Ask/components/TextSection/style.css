@@ -1,0 +1,50 @@
+/* Just Ask. — TextSection styles. Needs foundations (tokens.css + components/bundle.css), Button; ActionLink, Callout, PullQuote, ResourceLink, ResourceCard, ListBlock, DataBars when those options are used. Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   TextSection — rule + H2 + prose, optional aside (Callout / PullQuote), subsections, resource links, action link
+   ===================================================================== */
+.ja-text-section__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-40); }
+.ja-text-section__body { margin-top: var(--space-24); max-width: var(--ja-prose); }
+.ja-text-section__sub { margin-top: var(--space-40); max-width: var(--ja-prose); }
+.ja-text-section__sub .ja-h3 + * { margin-top: var(--space-12); }
+.ja-text-section__sub .ja-pullquote { margin-top: var(--space-24); }
+.ja-text-section__more { margin-top: var(--space-32); max-width: var(--ja-prose); }
+.ja-text-section__more > .ja-link { margin-top: var(--space-8); }
+/* Nov 20: resource cards closing a TextSection subsection (Treating, "Choosing a preventive treatment"): full container width,
+   two columns (CardGrid's intrinsic grid), 24 under the subsection copy. ACF: a relationship field to Library items. */
+.ja-card-grid__list.ja-text-section__cards { margin-top: var(--space-24); }   /* doubled class: beats CardGrid's list margin, defined later */
+/* (Nov 19: resource links after a card grid were tried at full width; reverted to the 720 prose width at Jerry's call.) */
+@container ja-content (min-width: 54rem) {
+  .ja-text-section--aside .ja-text-section__grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-64); align-items: start; }
+  .ja-text-section--aside .ja-text-section__aside { margin-top: 0; padding-top: calc(var(--stroke-accent) + 24px); } /* Nov 20 (Jerry): the aside's top lines up with the H2, not the accent rule (rule + 24 gap, same as the split lede) */
+}
+
+/* Nov 20: aside beside a subsection (Treating: "Choosing a preventive treatment" + "Give it time"). The H2 and intro run full
+   width; the subsection and callout share the 7/5 split below, their tops level (no rule offset). ACF: the aside's
+   "align with" select = heading (default) / first subsection. */
+.ja-text-section__grid--sub { margin-top: var(--space-40); }
+/* Same columns as the resource cards below (CardGrid's intrinsic 2-up, 24 gap), so the subsection lines up over the first
+   card and the callout over the second, and both rows stack at the same width. */
+.ja-text-section--aside .ja-text-section__grid.ja-text-section__grid--sub { gap: var(--space-24); align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 300px), calc((100% - var(--space-24)) / 2)), 1fr)); }
+.ja-text-section__grid--sub > .ja-text-section__sub { margin-top: 0; }
+@container ja-content (min-width: 54rem) {
+  .ja-text-section--aside .ja-text-section__grid--sub .ja-text-section__aside { padding-top: 0; }
+}
+
+/* TextSection --split (Nov 19): for short, single-point sections on a tinted band (Ask About All Medications, Talking
+   About the Diagnosis, Resources for Your Patients). Heading left (5 cols), a larger lede + link right (7 cols), so a
+   two-sentence section reads as a deliberate statement instead of a half-empty band. No panel or image, so it never
+   looks like a FeaturedResource. Lede 18/28 → 20/32 (fluid), navy. Stacks when the content box is under 54rem. */
+.ja-text-section__split { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-24); }
+.ja-text-section__lede { margin: 0; max-width: var(--ja-prose); font-size: var(--ja-hero-subtitle-size); line-height: var(--ja-hero-subtitle-lh); }
+.ja-text-section__lead .ja-text-section__more { margin-top: var(--space-24); }
+@container ja-content (min-width: 54rem) {
+  .ja-text-section__split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-64); align-items: start; }
+  .ja-text-section__lead { padding-top: calc(var(--stroke-accent) + 24px); }   /* lede's first line sits level with the H2 (accent rule + 24 gap; 3px since Nov 20) */
+  /* Nov 20 (tip band option F, chosen): a 1px sky rule between the columns, from the top of the accent rule down, so heading and
+     lede read as one unit. */
+  .ja-text-section__split { gap: var(--space-48); }
+  .ja-text-section__lead { align-self: stretch; padding-left: var(--space-48); border-left: var(--stroke-border) solid var(--graphic-quiet); }
+}
+/* Section-ending action buttons: a button where a section leads to another page. */
+.ja-text-section__more > .ja-button { margin-top: var(--space-8); }

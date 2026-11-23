@@ -1,0 +1,36 @@
+<!-- @dsCard height=320 -->
+<div class="cv">
+  <style>
+    .cv{position:relative;width:960px;height:320px;background:var(--surface-page);overflow:hidden;font-family:var(--font-sans)}
+    .cv svg{position:absolute;inset:0}
+    .cv .navy{fill:var(--navy)} .cv .blue{fill:var(--blue)} .cv .sky{fill:var(--sky)} .cv .pale{fill:var(--pale-blue)}
+    .cv .white{fill:var(--white)}
+    .cv .r{rx:var(--radius-md)}
+    .cv .txt{position:absolute;left:48px;bottom:40px;max-width:440px}
+    .cv h1{margin:0;font-weight:800;font-size:120px;line-height:.95;letter-spacing:var(--tracking-display);color:var(--text-default)}
+    .cv p{margin:16px 0 0;font-size:14px;line-height:22px;color:var(--text-muted)}
+  </style>
+  <svg width="960" height="320" viewBox="0 0 960 320" aria-hidden="true">
+    <!-- blocks: navy 240×320 slab (space-80×3), blue 160×160 (space-80×2), sky 96×96 (space-96), pale-blue 64×96 (space-64 × space-96); radius-md on the inner blocks
+         arrangement: one tall navy slab bleeding top and bottom at the right edge, blue and sky stacked against it, pale-blue as relief
+         pattern: the brand's own graphic language ("short blue rules, open evidence brackets") — one open evidence bracket in sky on navy and one accent rule in white on blue
+         steps/radii: stroke-accent 4 for bracket and rule, accent-rule-width 112, bracket sides space-24, radius-md 8 -->
+    <rect class="navy" x="720" y="0" width="240" height="320"/>
+    <rect class="blue r" x="552" y="72" width="160" height="160"/>
+    <rect class="sky r" x="616" y="240" width="96" height="96"/>
+    <rect class="pale r" x="544" y="240" width="64" height="96"/>
+    <!-- evidence bracket -->
+    <rect class="sky" x="760" y="104" width="160" height="4"/>
+    <rect class="sky" x="760" y="104" width="4" height="24"/>
+    <rect class="sky" x="916" y="104" width="4" height="24"/>
+    <rect class="sky" x="760" y="212" width="160" height="4"/>
+    <rect class="sky" x="760" y="192" width="4" height="24"/>
+    <rect class="sky" x="916" y="192" width="4" height="24"/>
+    <!-- accent rule -->
+    <rect class="white" x="576" y="148" width="112" height="4"/>
+  </svg>
+  <div class="txt">
+    <h1>Just<br>Ask.</h1>
+    <p>White space. Clear hierarchy. Human connection.</p>
+  </div>
+</div>

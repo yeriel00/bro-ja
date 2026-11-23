@@ -1,0 +1,38 @@
+/* Just Ask. — StepCards styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   StepCards — numbered, linked cards for a real sequence (After the Yes)
+   ===================================================================== */
+.ja-step-cards { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(16px, 13.183px + 0.7512vw, 24px); margin: var(--space-40) 0 0; padding: 0; list-style: none; }
+/* A sequence is 1 column or 3, never 2 + 1: switches on the section's content width. */
+@container ja-content (min-width: 54rem) { .ja-step-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ja-step-card { position: relative; display: flex; flex-direction: column; height: 100%; padding: clamp(24px, 21.183px + 0.7512vw, 32px);
+  border: var(--stroke-border) solid var(--graphic-quiet); border-radius: var(--radius-md); background: var(--surface-page);
+  transition: background-color var(--ja-duration-hover) var(--ja-ease), border-color var(--ja-duration-hover) var(--ja-ease); }
+/* Nov 19 (review item 7, chosen): the step number is the StepNav circle (40px, 2px sky ring, muted number). With no current
+   step on the hub, the cards match StepNav's "no step highlighted" state. The time label (content model: Five minutes /
+   Ten minutes / At follow-up) sits beside it, muted. Hover: ring blue, number navy. */
+.ja-step-card__head { display: flex; align-items: center; gap: var(--space-12); }
+.ja-step-card__circle { flex: none; display: block; box-sizing: border-box; width: 40px; height: 40px; border: var(--stroke-focus) solid var(--graphic-quiet); border-radius: 50%;
+  background: var(--surface-page); color: var(--text-muted); font-weight: 700; font-size: 16px; line-height: 36px; text-align: center;
+  transition: border-color var(--ja-duration-hover) var(--ja-ease), color var(--ja-duration-hover) var(--ja-ease); }
+.ja-step-card__time { color: var(--text-muted); }
+.ja-step-card:hover .ja-step-card__circle { border-color: var(--graphic-accent); color: var(--text-default); }
+.ja-step-card__title { margin-top: var(--space-24); }
+.ja-step-card__title a { color: var(--text-default); text-decoration: none; }
+.ja-step-card__title a::after { content: ""; position: absolute; inset: 0; border-radius: var(--radius-md); } /* whole card is the link */
+.ja-step-card__title a:focus-visible { outline: none; }
+.ja-step-card__title a:focus-visible::after { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-step-card__text { margin-top: var(--space-12); color: var(--text-default); }
+.ja-step-card__go { display: flex; justify-content: flex-end; margin-top: auto; padding-top: var(--space-24); color: var(--text-link); transition: color var(--ja-duration-hover) var(--ja-ease); }
+.ja-step-card__go .ja-arrow { width: 16px; height: 28px; }
+/* Nov 20 (Jerry): a text link + arrow at the foot of each step card ("View Step 1: Diagnosing"), left-aligned like the links
+   on the patient-group cards, so it's clear each card opens a full page. Visual only: the whole card stays the link (title
+   ::after), this label is aria-hidden so screen readers hear the title once. Last word + arrow never split (ja-nowrap).
+   Blue on white 4.63:1; card hover underlines the label (navy on pale blue). */
+.ja-step-card__go { justify-content: flex-start; font-weight: 600; font-size: 18px; line-height: 28px; color: var(--text-link-on-tint); }
+.ja-step-card__go .ja-arrow { width: 11px; height: 20px; margin-left: 4px; }
+.ja-step-card:hover .ja-step-card__go-text { text-decoration: underline; text-underline-offset: 3px; }
+/* Hover: pale-blue fill + blue edge. Blue is 4.6:1 on white and 4.0:1 on pale blue (above the 3:1 non-text minimum),
+   and stays distinct from the navy focus ring. */
+.ja-step-card:hover { background: var(--surface-soft); border-color: var(--graphic-accent); }
+.ja-step-card:hover .ja-step-card__go { color: var(--text-link-on-soft); }

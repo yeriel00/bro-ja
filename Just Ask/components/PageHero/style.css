@@ -1,0 +1,33 @@
+/* Just Ask. — PageHero styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   PageHero — interior page header. Variants: --media, --question, --step, (default) simple
+   ===================================================================== */
+.ja-page-hero { padding-block: clamp(40px, 25.915px + 3.7559vw, 80px) var(--ja-section); }
+.ja-page-hero__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-32); align-items: center; }
+.ja-page-hero__eyebrow { display: block; margin-bottom: var(--space-16); color: var(--text-link); }
+.ja-page-hero__eyebrow a { color: inherit; text-decoration: underline; text-underline-offset: 3px; transition: color var(--ja-duration-hover) var(--ja-ease); }
+.ja-page-hero__eyebrow a:hover { color: var(--text-link-hover); }
+.ja-page-hero__eyebrow a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+.ja-page-hero__intro { margin-top: var(--space-24); max-width: var(--ja-prose); }
+.ja-page-hero__img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 70% 30%; border-radius: var(--radius-media); }
+.ja-media-placeholder { display: flex; align-items: center; justify-content: center; width: 100%; aspect-ratio: 4 / 3;
+  border-radius: var(--radius-media); background: var(--surface-soft); color: var(--text-muted); font-size: 14px; line-height: 22px; text-align: center; padding: var(--space-24); }
+@container ja-content (min-width: 54rem) {
+  .ja-page-hero--media .ja-page-hero__grid { grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); gap: var(--space-64); }
+  .ja-page-hero--question .ja-page-hero__grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-64); }
+}
+
+/* Question panel (compact clinical question; Nov 20: the copy action moved out of the hero to the page's CTA band) */
+.ja-qpanel { padding: clamp(32px, 24.367px + 2.0356vw, 40px) clamp(24px, 1.099px + 6.1069vw, 48px); border-radius: var(--radius-media); background: var(--surface-soft); }
+.ja-qpanel__quote { position: relative; margin: 0; padding-left: var(--space-32); }
+.ja-qpanel__quote::before { /* question bracket: open bracket on the left */
+  content: ""; position: absolute; left: 0; top: 6px; bottom: 6px; width: 14px;
+  border: var(--stroke-thin-accent) solid var(--graphic-accent); border-right: 0; }
+/* 1. PageHero (Simple and Step variants; ACF true/false show_pattern, default on, off on Contact and legal pages).
+   Hangs off the top-right, tilted; ends inside the hero so it never meets the next section. Right of the 720 text
+   column on tablet and desktop; on phones a smaller crop sits in the corner beside the eyebrow and only grazes the
+   end of the H1, faint enough (pale blue at 70%) that the heading keeps full contrast. */
+.ja-page-hero { position: relative; overflow: hidden; }
+.ja-page-hero > .ja-container { position: relative; z-index: 1; }
+.ja-page-hero__pattern { --ja-pattern-ink: var(--pale-blue); opacity: .7; aspect-ratio: 700 / 869; transform: rotate(-16deg);
+  width: clamp(260px, 161.408px + 26.2911vw, 540px); top: clamp(-440px, -122.254px - 22.0657vw, -205px); right: clamp(-140px, -91.324px - 3.3803vw, -104px); }

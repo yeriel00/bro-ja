@@ -1,0 +1,44 @@
+/* Just Ask. — QuoteBand styles. Needs foundations (tokens.css + components/bundle.css). */
+/* ---------- 10a Quote band ---------- */
+/* Fluid (Nov 20): photo height, overlap and card padding scale (reaching the 768 values by 768); the photo-behind layout
+   is a container query on the band (`ja-quote`, 64rem), not a viewport query. No media queries. */
+.ja-quote { container: ja-quote / inline-size; position: relative; overflow: hidden; background: var(--surface-page); }
+/* Narrow band (Nov 19, overlap layout): the photo runs full-bleed and fades to white at the bottom (the desktop's
+   left-to-right fade turned on its side); the crop sits right so the clinician's face stays clear; the card rides up over
+   the faded part, so it still reads as a card on the photo. Text stays on the solid card. */
+.ja-quote__photo { position: relative; height: clamp(320px, 224.580px + 25.4453vw, 420px); overflow: hidden; }
+.ja-quote__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 78% center; display: block; }
+.ja-quote__photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0) 50%, #fff 100%); }
+.ja-quote__inner { position: relative; margin-top: calc(-1 * clamp(112px, 66.198px + 12.2137vw, 160px)); padding: 0 var(--ja-margin) 24px; }
+.ja-quote__card {
+  position: relative;
+  margin: 0;
+  max-width: 560px;
+  padding: clamp(24px, 8.733px + 4.0712vw, 40px);
+  border: var(--stroke-border) solid var(--graphic-quiet);   /* 1px sky edge, as on ResourceCard (Nov 19); padding inside it */
+  border-radius: var(--radius-media);
+  background: var(--surface-soft);
+  color: var(--text-default);
+}
+/* Quote treatment = PullQuote (interior-page canvas, the source of truth since Nov 19): no side bar; a 64px ExtraBold
+   blue mark in a 36px-tall box (the glyph overhangs into the gap), the quotation right under it, attribution muted. */
+.ja-quote__body { position: relative; }
+.ja-quote__mark { display: block; height: 36px; color: var(--graphic-accent); font: 800 64px/64px var(--font-sans); }
+.ja-quote__mark span { display: block; }
+.ja-quote__text { margin: 0; quotes: none; }
+.ja-quote__cite { display: block; margin-top: 16px; color: var(--text-muted); font-style: normal; }
+@container ja-quote (min-width: 64rem) {
+  .ja-quote__photo { position: absolute; inset: 0; height: auto; }
+  .ja-quote__photo img { object-position: center; }
+  .ja-quote__photo::after { background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 99%); }
+  .ja-quote__inner {
+    display: flex; align-items: center; min-height: 560px;
+    width: 100%; max-width: calc(var(--ja-content) + 2 * var(--ja-margin)); margin: 0 auto; padding-block: 92px;
+  }
+  .ja-quote__card { width: 560px; }
+}
+
+/* ---------- White card option (Nov 20, The Movement and The Ask) ----------
+   A white card on the photo, so the band doesn't run into pale-blue panels right above it. Same sky edge and padding;
+   only the fill changes (navy text 14.15:1 on white). Default stays as live. */
+.ja-quote--white .ja-quote__card { background: var(--surface-page); }

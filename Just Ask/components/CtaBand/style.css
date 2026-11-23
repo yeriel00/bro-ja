@@ -1,0 +1,39 @@
+/* Just Ask. — CtaBand styles. Needs foundations (tokens.css + components/bundle.css) and components/Button/style.css, components/ActionLink/style.css. */
+/* ---------- 10c Closing CTA band ---------- */
+/* Fluid (Nov 20): band padding 48 → 96 and the text-to-actions gap 32 → 48 (by 768) scale. One media query left:
+   the brain pattern's size and the edge fade's stops (art direction, decorative). */
+.ja-cta {
+  position: relative; overflow: hidden;
+  background: var(--surface-inverse); color: var(--text-inverse);
+  text-align: center;
+}
+.ja-cta > .ja-container { position: relative; z-index: 1; padding-block: clamp(48px, 31.099px + 4.5070vw, 96px); }
+
+/* One column: statement → question → body → actions. The text lines sit 24 apart; the actions 32 / 48 below the text.
+   The question and body pull up from the column gap to 24, so no extra wrapper is needed. */
+.ja-cta__content { --ja-cta-gap: clamp(32px, 16.733px + 4.0712vw, 48px); display: flex; flex-direction: column; align-items: center; gap: var(--ja-cta-gap); max-width: 1020px; margin: 0 auto; }
+.ja-cta__content > * { margin: 0; width: 100%; }
+.ja-cta__question { color: var(--sky); }
+.ja-cta__content > .ja-cta__question, .ja-cta__content > .ja-cta__body { margin-top: calc(24px - var(--ja-cta-gap)); }
+
+/* Actions: a centered row of buttons (wraps when narrow), the share link centered 16 below. */
+.ja-cta__actions { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.ja-cta__buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.ja-cta__actions .ja-link { text-align: center; }
+.ja-cta [data-ja-copy][hidden] { display: none; }
+
+.ja-cta .ja-pattern {            /* one brain per edge; the band's centre stays solid navy */
+  --ja-pattern-ink: var(--muted-navy);
+  top: 50%; height: 120%; aspect-ratio: 700 / 869; transform: translateY(-50%);
+  opacity: .6;
+}
+.ja-cta .ja-pattern--l { left: 0; transform: translate(-50%, -50%); }   /* hangs half off the left edge: only its right half shows */
+.ja-cta .ja-pattern--r { right: 0; transform: translate(50%, -50%); }   /* hangs half off the right edge: only its left half shows */
+.ja-cta::after {                     /* fade: 0% navy at each edge → 100% toward the centre */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, transparent 0%, var(--surface-inverse) 34%, var(--surface-inverse) 66%, transparent 100%);
+}
+@media (min-width: 1024px) {   /* art direction only */
+  .ja-cta .ja-pattern { height: 128%; }
+  .ja-cta::after { background: linear-gradient(90deg, transparent 0%, var(--surface-inverse) 28%, var(--surface-inverse) 72%, transparent 100%); }
+}

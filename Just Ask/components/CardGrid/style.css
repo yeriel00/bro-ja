@@ -1,0 +1,53 @@
+/* Just Ask. — CardGrid + InfoCard styles. Needs foundations (tokens.css + components/bundle.css), Button; ResourceLink, Callout, PullQuote, ResourceCard, ListBlock when used. Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   CardGrid (section) + InfoCard (piece)
+   ===================================================================== */
+/* (Back-to-back CardGrid spacing is now the general same-ground rule under "Page rhythm" at the end of this file.) */
+.ja-card-grid__intro { margin-top: var(--space-24); max-width: var(--ja-prose); }
+.ja-card-grid__list {
+  /* Fluid (Nov 20): intrinsic grid. As many 300px-minimum columns as fit, capped at --ja-cols (2; 3 for --3, 4 for --4).
+     1 column at 375, 2 at 768, 3 / 4 at 1440; never a squeezed 4-up at 1024. */
+  --ja-cols: 2; --ja-grid-gap: var(--space-24);
+  display: grid; gap: var(--ja-grid-gap); margin: clamp(40px, 37.183px + 0.7512vw, 48px) 0 0; padding: 0; list-style: none;
+  grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 300px), calc((100% - (var(--ja-cols) - 1) * var(--ja-grid-gap)) / var(--ja-cols))), 1fr));
+}
+.ja-card-grid--3 .ja-card-grid__list { --ja-cols: 3; }
+.ja-card-grid--4 .ja-card-grid__list { --ja-cols: 4; }
+.ja-card-grid__after { margin-top: var(--space-32); }
+/* Nov 20: CardGrid closing pair: an optional Callout and a ResourceCard side by side, on the same columns as the cards above
+   (callout under the left card, resource under the right). Stacks when each column would drop under 300px. */
+.ja-card-grid__pair { display: grid; gap: var(--space-24); align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(max(min(100%, 300px), calc((100% - var(--space-24)) / 2)), 1fr)); }
+.ja-card-grid__pair > .ja-resource { height: 100%; }
+
+.ja-card-grid__list > li > .ja-resource { height: 100%; }
+/* Nov 19 (option 2, chosen): cards are a soft clinical-tint fill with no visible border, so they read as content and the
+   white, blue-edged resource link reads as the action. On a tinted section cards turn white. */
+.ja-info-card { display: flex; flex-direction: column; height: 100%; padding: clamp(24px, 21.183px + 0.7512vw, 32px);
+  border: var(--stroke-border) solid transparent; border-radius: var(--radius-md); background: var(--surface-statistic); color: var(--text-default); }
+.ja-section--tint .ja-info-card:not(.ja-info-card--inverse) { background: var(--surface-page); }
+.ja-info-card__label { margin-bottom: var(--space-12); color: var(--text-muted); }
+.ja-info-card__text { margin-top: var(--space-12); }
+.ja-info-card .ja-list { margin-top: var(--space-16); }
+.ja-info-card .ja-pullquote { margin-top: var(--space-24); padding-top: var(--space-24); border-top: var(--stroke-border) solid var(--border-subtle); }
+.ja-info-card__footer { margin-top: auto; padding-top: var(--space-24); }
+/* A resource link in a card footer: no bottom rule (the card edge closes it); the container query stacks the format */
+.ja-info-card__footer .ja-reslink { flex-wrap: wrap; row-gap: 0; min-height: 0; padding: 0; border: 0; border-radius: 0; background: none; }
+.ja-info-card__footer .ja-reslink:hover { background: none; }
+.ja-info-card__footer .ja-reslink .ja-arrow { width: 11px; padding: 0; background: none; color: var(--graphic-accent); }
+.ja-info-card__footer .ja-reslink__title { flex-basis: calc(100% - 27px); } /* bare 11px arrow + 16px gap */
+/* Nov 19: in a card the resource link is blue (text-link, 4.63:1 on white), so it reads as the card's action and no longer
+   matches the navy H3 and body text above it. */
+.ja-info-card__footer .ja-reslink { color: var(--text-link-on-tint); } /* Nov 20: darker link blue so titles pass AA on the card tint (was 4.40:1) */
+.ja-info-card__footer .ja-reslink:hover { color: var(--text-link-hover); }
+
+/* Card marker (Nov 19): the statistic card's 40 × 2 blue rule above the H3, so cards read as cards and not as the
+   list panel. */
+.ja-info-card::before { content: ""; display: block; flex: none; width: 40px; height: var(--stroke-thin-accent); margin-bottom: var(--space-16); background: var(--graphic-accent); }
+/* Inverse card (Nov 19): navy fill, white text, sky marker and bullets. The one card in a set that must be seen first
+   (Needs Urgent Evaluation). Replaces the 2px-border emphasis there, which didn't separate enough. White on navy 14.15:1. */
+.ja-info-card--inverse { background: var(--surface-inverse); border-color: var(--surface-inverse); color: var(--text-inverse); }
+.ja-info-card--inverse::before { background: var(--sky); }
+.ja-info-card--inverse .ja-h3 { color: inherit; }
+.ja-info-card--inverse .ja-list--bullet > li::before { background: var(--sky); }
+.ja-card-grid__after > .ja-button { margin-top: var(--space-8); }

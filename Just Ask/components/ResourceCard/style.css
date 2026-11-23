@@ -1,0 +1,48 @@
+/* Just Ask. — ResourceCard styles. Needs foundations (tokens.css + components/bundle.css) and components/ActionLink/style.css. */
+/* ---------- Resource card (After the Yes hub, Resource Library; from Figma 17:15) ---------- */
+.ja-resource {
+  display: flex; flex-direction: column;
+  padding: var(--space-24);
+  border: var(--stroke-border) solid var(--graphic-quiet); /* 1px sky edge (Figma: Graphic/Quiet, inside; content inset 25) */
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  color: var(--text-default);
+}
+/* Optional type label ("Quick Guide", "Tool", "Video"…): Label 16/24 SemiBold, muted navy, 16 above the title */
+.ja-resource__type { margin: 0 0 var(--space-16); color: var(--text-muted); }
+.ja-resource__title { margin: 0; }
+.ja-resource__text { margin: var(--space-16) 0 0; color: var(--text-muted); }
+/* Visible gap above the link is 16: 4 margin + the link's 12 touch padding. The -12 keeps the 24 bottom inset. */
+.ja-resource .ja-link { margin-top: var(--space-4); margin-bottom: -12px; align-self: flex-start; }
+/* Equal-height cards: the last block before the link takes the spare space, so links line up at the bottom of a row.
+   Summary shown → the summary grows; summary hidden → the title grows. */
+.ja-resource__text,
+.ja-resource__title:not(:has(~ .ja-resource__text)) { flex-grow: 1; }
+
+/* ---------- Tags (Resource Library cards; Nov 19, from the interior-page canvas) ---------- */
+/* Format tag first (filled, one color per format, white 14/22 SemiBold label), then the patient-group tag (white, navy text).
+   The label always names the format, so color is never the only cue. Unknown formats fall back to navy. */
+.ja-tags { display: flex; flex-wrap: wrap; gap: var(--space-8); margin: 0 0 var(--space-16); padding: 0; list-style: none; }
+.ja-tag { display: inline-block; padding: 2px 10px; border-radius: var(--radius-sm); background: var(--surface-page); color: var(--text-default); font-size: 14px; line-height: 22px; font-weight: 600; }
+.ja-tag--format { background: var(--tag-color, var(--navy)); color: var(--text-inverse); }
+.ja-tag--quick-guide { --tag-color: var(--tag-quick-guide); }
+.ja-tag--guideline { --tag-color: var(--tag-guideline); }
+.ja-tag--tool { --tag-color: var(--tag-tool); }
+.ja-tag--article { --tag-color: var(--tag-article); }
+.ja-tag--video { --tag-color: var(--tag-video); }
+.ja-tag--podcast { --tag-color: var(--tag-podcast); }
+
+/* ---------- Bilingual downloads (Resource Library) ---------- */
+/* English and Spanish PDF links side by side (wrapping); the Spanish link is left out when there's no Spanish file.
+   Spanish is teal (link-spanish, 5.79:1 on pale blue) so color also separates the two; it is lighter than navy (2.1:1),
+   so the pair differs in lightness, not hue alone. Keys off hreflang. Hover: muted navy, like every soft link. */
+.ja-resource__downloads { display: flex; flex-wrap: wrap; gap: 0 var(--space-24); }
+.ja-resource__downloads .ja-link { align-self: auto; }
+.ja-resource__downloads .ja-link[hreflang="es"] { color: var(--link-spanish); }
+.ja-resource__downloads .ja-link[hreflang="es"]:hover { color: var(--text-muted); }
+
+/* ---------- Outline button action (Nov 20) ----------
+   The card's action is an outline Button whose label follows the format (View Guide, Read Guideline, Open Tool,
+   Read Article, Watch Video, Listen), with the title in a visually hidden span for a unique accessible name.
+   Replaces the ActionLink; the link markup above still works for older cards. Needs Button styles. */
+.ja-resource .ja-resource__action { margin-top: var(--space-24); align-self: flex-start; }

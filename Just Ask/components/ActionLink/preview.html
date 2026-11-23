@@ -1,0 +1,18 @@
+<!-- @dsCard group="Actions" height=420 subtitle="Action link — default, hover, focus, pressed; on pale blue; on navy" -->
+<div class="ja-root pv">
+  <link rel="stylesheet" href="../../components/ActionLink/style.css">
+  <style>
+    .pv{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
+    .pv .cap{font:600 12px/16px var(--font-sans);color:var(--text-muted)}
+    .pv .soft{background:var(--surface-soft);padding:16px 24px;border-radius:var(--radius-md)}
+    .pv .inv{background:var(--surface-inverse);padding:16px 24px;border-radius:var(--radius-md)}
+    .pv .inv .cap{color:var(--sky)}
+  </style>
+  <div><a class="ja-link" href="#">See the Question&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a><div class="cap">Default · text-link</div></div>
+  <div><a class="ja-link is-hover" href="#">See the Question&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a><div class="cap">Hover · text-link-hover</div></div>
+  <div><a class="ja-link is-focus" href="#">See the Question&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a><div class="cap">Focus · 2px border-focus around the 48px target</div></div>
+  <div><a class="ja-link is-pressed" href="#">See the Question&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a><div class="cap">Pressed · text-link-hover</div></div>
+  <div class="soft"><a class="ja-link ja-link--on-soft ja-link--label" href="#">Explore diagnosis resources</a><div class="cap">On surface-soft · text-link-on-soft (navy, AA)</div></div>
+  <div class="inv"><a class="ja-link ja-link--inverse" href="#">See the Question&nbsp;<svg class="ja-arrow" viewBox="0 0 10.8 21.6" aria-hidden="true" focusable="false"><path d="M0.88 12.06h6.44v1.96H0.88zM4.35 17.12l2.45-4.09-2.45-4.05h2.43l2.66 4.05-2.66 4.09zM0 20.25h10.8v0.9H0z"/></svg></a><div class="cap">On surface-inverse · white, white focus ring</div></div>
+  <script>document.querySelectorAll('.pv a').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault()})})</script>
+</div>

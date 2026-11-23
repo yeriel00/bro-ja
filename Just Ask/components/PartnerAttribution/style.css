@@ -1,0 +1,30 @@
+/* Just Ask. — PartnerAttribution styles. Needs foundations (tokens.css + components/bundle.css) and components/ActionLink/style.css. */
+/* ---------- 08 Partner attribution ---------- */
+/* Fluid (Nov 20): no media queries. Spacing and logo height scale (tablet values reached by 768); the logo row wraps. */
+/* Introduction: H2, then body + link, stacked and centered at every size (max 720 on desktop). No accent rule. */
+.ja-partners__head { display: grid; gap: 32px; max-width: var(--prose-max-desktop); margin-inline: auto; text-align: center; }
+.ja-partners__head .ja-link { margin-top: clamp(14px, 4.458px + 2.5445vw, 24px); }   /* the link box adds 10 */
+
+/* Logo row: one centered, wrapping row. Logos have no tile; each is the same height with its natural width. */
+.ja-partners__logos {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: var(--space-24) clamp(16px, 10.366px + 1.5023vw, 32px);
+  margin: clamp(30px, 18.028px + 3.1925vw, 64px) 0 0; padding: 0; list-style: none;
+}
+/* Show Introduction off: the logo row is the first thing in the section. */
+.ja-partners .ja-container > .ja-partners__logos:first-child { margin-top: 0; }
+/* ...and the section tightens to 24 (mobile, tablet) / 40 (desktop) so the row sits as a band under a page header.
+   Automatic: keys off the missing introduction, no extra field. */
+.ja-partners:not(:has(.ja-partners__head)) { padding-block: clamp(24px, 18.366px + 1.5023vw, 40px); }
+.ja-partner { display: flex; align-items: center; height: clamp(40px, 24.733px + 4.0712vw, 56px); }
+.ja-partner a { display: flex; height: 100%; }
+.ja-partner img { display: block; height: 100%; width: auto; max-width: 200px; object-fit: contain; }
+/* Placeholder: stands in for the logo artwork itself. */
+.ja-partner__placeholder {
+  display: flex; align-items: center; justify-content: center;
+  width: clamp(96px, 50.198px + 12.2137vw, 144px); height: 100%;
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  color: var(--text-muted);
+  text-align: center;
+}

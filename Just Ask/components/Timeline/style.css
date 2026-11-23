@@ -1,0 +1,22 @@
+/* Just Ask. — Timeline styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   Timeline — ordered checkpoints (When to Check In)
+   ===================================================================== */
+/* Nov 20 redesign: no circles or connecting line, so it no longer echoes the StepNav stepper right above it on the step
+   pages. Each checkpoint is a card (white on a tinted section, clinical tint on white) with a blue chevron in the gap
+   pointing to the next one: right when they sit side by side, down when stacked. The card's timing line is the point,
+   so it is SemiBold navy. Switches on the section's content width (54rem), like StepCards. */
+.ja-timeline { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-40); margin: clamp(40px, 37.183px + 0.7512vw, 48px) 0 0; padding: 0; list-style: none; }
+.ja-timeline > li { position: relative; display: flex; flex-direction: column; padding: clamp(24px, 21.183px + 0.7512vw, 32px);
+  border-radius: var(--radius-md); background: var(--surface-statistic); }
+.ja-section--tint .ja-timeline > li { background: var(--surface-page); }
+.ja-timeline__text { margin-top: var(--space-12); font-weight: 600; }
+.ja-timeline > li:not(:last-child)::after {   /* chevron to the next checkpoint (decorative) */
+  content: ""; position: absolute; left: 50%; bottom: -27px; width: 12px; height: 12px;
+  border: solid var(--graphic-accent); border-width: 0 var(--stroke-thin-accent) var(--stroke-thin-accent) 0;
+  transform: translateX(-50%) rotate(45deg); }
+@container ja-content (min-width: 54rem) {
+  .ja-timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-48); }
+  .ja-timeline > li:not(:last-child)::after { left: auto; bottom: auto; top: 50%; right: -30px; transform: translateY(-50%) rotate(-45deg); }
+}
+.ja-timeline-note { margin-top: var(--space-32); max-width: var(--ja-prose); color: var(--text-muted); }

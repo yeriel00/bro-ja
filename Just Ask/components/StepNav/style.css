@@ -1,0 +1,31 @@
+/* Just Ask. — StepNav styles. Needs foundations (tokens.css + components/bundle.css). Added Nov 20 from the interior-page canvas (status: in review). */
+/* =====================================================================
+   StepNav — its own block, placed right after the PageHero on the step pages.
+   No padding of its own: the hero's bottom padding sits above it, the next section's top padding below.
+   Links come from one ACF options-page repeater; the current step is the link whose page is the page being viewed.
+   ===================================================================== */
+/* Nov 19: a stepper (numbered circles joined by a thin line) instead of thick top bars, so it no longer stacks up
+   with the accent rule over the next section's H2. Circle 40px, 2px sky ring, number muted; current step: filled blue,
+   white number (4.63:1). Connector 2px sky. "Step N" stays in the markup for screen readers but is visually hidden
+   (the circle shows the number; its content is hidden from assistive tech with the `/ ""` alt text). */
+.ja-step-nav { margin: 0; padding-bottom: clamp(24px, 18.366px + 1.5023vw, 40px); }   /* Nov 20: its own breathing room below (24 → 40), on top of the next section's top padding */
+.ja-step-nav ol { --ja-stepnav-gap: clamp(12px, 7.775px + 1.1268vw, 24px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ja-stepnav-gap); margin: 0; padding: 0; list-style: none; counter-reset: ja-step; }
+.ja-step-nav li { position: relative; counter-increment: ja-step; }
+.ja-step-nav li:not(:last-child)::after { content: ""; position: absolute; top: 19px; left: 52px; right: calc(12px - var(--ja-stepnav-gap)); height: 2px; background: var(--graphic-quiet); }
+.ja-step-nav a { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: var(--control-min-height); color: var(--text-muted); text-decoration: none;
+  transition: color var(--ja-duration-hover) var(--ja-ease); }
+.ja-step-nav a::before { content: counter(ja-step) / ""; display: block; box-sizing: border-box; width: 40px; height: 40px; margin-bottom: var(--space-12);
+  border: var(--stroke-focus) solid var(--graphic-quiet); border-radius: 50%; background: var(--surface-page); color: var(--text-muted);
+  font-weight: 700; font-size: 16px; line-height: 36px; text-align: center;
+  transition: border-color var(--ja-duration-hover) var(--ja-ease), background-color var(--ja-duration-hover) var(--ja-ease); }
+.ja-step-nav__num { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ja-step-nav__name { font-size: 16px; line-height: 24px; font-weight: 700; }
+.ja-step-nav a:hover { color: var(--text-default); }
+.ja-step-nav a:hover::before { border-color: var(--muted-navy); }
+.ja-step-nav a[aria-current="page"] { color: var(--text-default); }
+.ja-step-nav a[aria-current="page"]::before { background: var(--graphic-accent); border-color: var(--graphic-accent); color: var(--text-inverse); }
+.ja-step-nav a:focus-visible { outline: var(--stroke-focus) solid var(--border-focus); outline-offset: 2px; }
+/* StepNav has no padding of its own (the hero's bottom padding sits above it, the next section's top padding below).
+   When the next block changes ground (tinted band, navy CTA, photo band), that padding sits inside the colored band, so the
+   stepper would touch it: give it the section gap in white first (Nov 20). */
+.ja-step-nav + :is(.ja-section--tint, .ja-cta, .ja-quote, .ja-refs) { margin-top: var(--ja-section); }
