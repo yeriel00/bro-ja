@@ -104,7 +104,7 @@ img { max-width: 100%; }
 .ja-mobile-subnav { list-style: none; margin: 0; padding: 0 0 0 var(--space-24) !important; gap: 0 !important; border-left: 2px solid var(--graphic-quiet); }
 .ja-mobile-subnav a { font-size: 16px; font-weight: 500; min-height: 40px; }
 
-/* Contact: social icons — navy circle, white icon; the icon turns action blue (#2b79b9, the button color) on hover/focus */
+/* Contact: social icons — navy circle, white icon; the circle turns action blue (#2b79b9, the button color) on hover/focus */
 .ja-social__link { background: var(--navy); color: var(--white); transition: color var(--ja-duration-hover) var(--ja-ease), background-color var(--ja-duration-hover) var(--ja-ease); }
-.ja-social__link:hover, .ja-social__link:focus-visible { background: var(--navy); color: var(--action-primary-default); }
+.ja-social__link:hover, .ja-social__link:focus-visible { background: var(--action-primary-default); color: var(--white); }
 .ja-social__link svg { width: 22px; height: 22px; fill: currentColor; }
