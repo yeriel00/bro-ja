@@ -353,9 +353,9 @@ def diagnosing():
   </div></div>
 </section>
 {specific_cards("".join([
-    info_card("Hormones, contraception, and pregnancy", f"Note whether symptoms follow the menstrual cycle and ask about aura, which shapes contraception choices. We recommend yearly migraine screening from adolescence through menopause.{sup(7)}", reslinks(("Routine Migraine Screening in Women’s Health", "https://headachejournal.onlinelibrary.wiley.com/doi/10.1111/head.70023", "Guideline", "guideline"))),
-    info_card("Children and teens", f"Migraine in children often runs shorter and affects both sides of the head. A focused history and exam help you tell primary from secondary headache.{sup(8)}", reslinks(("Diagnosing and Treating Pediatric Migraine", "https://d1fakw34cbtrm5.cloudfront.net/PDFs/Migraine-Quick-Guides/Diagnosing-and-Treating-Pediatric-Migraine.pdf", "Quick Guide", "quick-guide"))),
-    info_card("Older adults", f"New headache after 50 calls for evaluation of other causes, including giant cell arteritis, before you confirm migraine.{sup(9)}", reslinks(("Headache in Older Adults", "https://d1fakw34cbtrm5.cloudfront.net/PDFs/Migraine-Quick-Guides/AHS-First-Contact-Headache-Older-Adults.pdf", "Quick Guide", "quick-guide"))),
+    info_card("Hormones, contraception, and pregnancy", f"Note whether symptoms follow the menstrual cycle and ask about aura, which shapes contraception choices. We recommend yearly migraine screening from adolescence through menopause.{sup(7)}", reslinks(("Routine Migraine Screening in Women’s Health", "https://headachejournal.onlinelibrary.wiley.com/doi/10.1111/head.70023"))),
+    info_card("Children and teens", f"Migraine in children often runs shorter and affects both sides of the head. A focused history and exam help you tell primary from secondary headache.{sup(8)}", reslinks(("Diagnosing and Treating Pediatric Migraine", "https://d1fakw34cbtrm5.cloudfront.net/PDFs/Migraine-Quick-Guides/Diagnosing-and-Treating-Pediatric-Migraine.pdf"))),
+    info_card("Older adults", f"New headache after 50 calls for evaluation of other causes, including giant cell arteritis, before you confirm migraine.{sup(9)}", reslinks(("Headache in Older Adults", "https://d1fakw34cbtrm5.cloudfront.net/PDFs/Migraine-Quick-Guides/AHS-First-Contact-Headache-Older-Adults.pdf"))),
 ]))}
 {page_nav((URL["aty"], "Back", "After the Yes"), (URL["treat"], "Next: Step 2", "Treating Migraine"))}
 {references(pending(9))}
